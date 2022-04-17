@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Public/CSS/signupAndLogin.css">
+    <link rel="stylesheet" href="Public/CSS/menu.css?ts=<?=time()?>">
+    <link rel="stylesheet" href="Public/CSS/signupAndLogin.css?ts=<?=time()?>">
     <title>Connexion</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
         <fieldset>
             <legend>Connexion</legend>
             <!--Email-->
-            <label for="">*Email: </label><input type="email" name="email" id="" placeholder="monmail@example.com"><br>
+            <label for="">*Email: </label><input type="email" name="email" id="" placeholder="monmail@example.com" value="<?= $_POST['email'] ?? '' ?>"><br>
             <?php if(isset($errors['email'])) :?>
                 <p class="errors"><?=$errors['email']?></p>
             <?php endif ?>
@@ -37,9 +38,4 @@
             Vous n'avez pas de compte? <a href="index.php?location=signUp">Inscrivez-vous</a>
         </fieldset>
     </form>
-    <?php if(isset($connectedEmail)) :?>
-            <?=$connectedEmail?>
-        <img src="<?=$session['picture']?>" alt="">
-    <?php endif ?>
-</body>
 </html>

@@ -84,3 +84,35 @@ function sessionMember($email)
 
     return $getSession;
 }
+
+function allMembers()
+{
+    $data_base= dataBaseConnexion();
+
+    $members= $data_base->query('SELECT id, username, firstName, lastName, picture, DATE_FORMAT(inscription_date, \'%d %b %Y\') AS date_ FROM members');
+    $members->execute();
+
+    return $members;
+}
+
+
+function insertMessage($fisrtName, $lastName, $email, $username, $message)
+{
+    $data_base= dataBaseConnexion();
+
+    $insertMessage= $data_base->prepare("INSERT INTO messages(firstName, lastName, email, username, messages) VALUES (?, ?, ?, ?, ?) ");
+    $insertMessage->execute([$fisrtName, $lastName, $email, $username, $message]);
+
+    return $insertMessage;
+}
+
+
+function allMessages()
+{
+    $data_base= dataBaseConnexion();
+
+    $message= $data_base->query('SELECT id, username, email, status_, firstName, lastName, messages , DATE_FORMAT(message_date, \'%d %b %Y à %Hh:%imin\') AS date_ FROM messages');
+    $message->execute();
+
+    return $message;
+}

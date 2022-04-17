@@ -26,7 +26,41 @@ if(isset($_GET['location']))
         case $_GET['location'] == "loginCheck":
             loginCheck();
             break;
-            
+        
+        case $_GET['location'] == "logout":
+            logout();
+            break;
+        
+        case $_GET['location'] == "adminHome":
+            if(isset($_SESSION['admin_username']))
+            {
+                adminHome();
+            }
+            else
+                homePage();
+            break;
+
+        case $_GET['location'] == "allMembers":
+            if(isset($_SESSION['admin_username']))
+            {
+                members();
+            }
+            else
+                homePage();
+            break;
+
+        case $_GET['location']== "contactUs":
+            contactUs();
+            break;
+
+        case $_GET['location'] == "contactCheck":
+            contactCheck();
+            break;
+
+        case $_GET['location']== "signal":
+            signal();
+            break;
+
         default:
             homePage();
             break;

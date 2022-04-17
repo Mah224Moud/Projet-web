@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="Public/CSS/signupAndLogin.css">
+    <link rel="stylesheet" href="Public/CSS/menu.css?ts=<?=time()?>">
+    <link rel="stylesheet" href="Public/CSS/signupAndLogin.css?ts=<?=time()?>">
 </head>
 <body>
     <?php require('header.php'); ?>
@@ -95,11 +96,10 @@
             alert("<?=$checked?>");
         </script>
     <?php endif ?>
-    <?php if(isset($done)) :?>
+    <?php if(isset($createdAcount)) :?>
         <script>
             window.location.replace("index.php?location=login");
         </script>
     <?php endif ?>
-
 </body>
 </html>

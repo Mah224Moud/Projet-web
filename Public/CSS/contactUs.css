@@ -1,0 +1,11 @@
+h2
+{
+    font-family: "Brush Script MT", cursive;
+}
+
+textarea
+{
+    resize: none;
+    border-radius: 15px;
+    padding: 0 15px;
+}

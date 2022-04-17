@@ -1,5 +1,10 @@
 <?php
+session_start();
+
 require("Model/model.php");
+
+global $session;
+
 
 function homePage()
 {
@@ -126,7 +131,7 @@ function signUpCheck()
                     else
                     {
                         $checked= "Votre compte a été crée avec succes";
-                        $done= true;
+                        $createdAcount= true;
                     }
                 }
                 else
@@ -141,7 +146,7 @@ function signUpCheck()
                     else
                     {
                         $checked= "Votre compte a été crée avec succes";
-                        $done= true;
+                        $createdAcount= true;
                     }
                 }
             }
@@ -161,7 +166,7 @@ function signUpCheck()
                 else
                 {
                     $checked= "Votre compte a été crée avec succes";
-                    $done= true;
+                    $createdAcount= true;
                 }
                     
             }
@@ -213,6 +218,22 @@ function loginCheck()
                 {
                     $connectedEmail= $login['email'];
                     $session= sessionMember($connectedEmail);
+
+                    //Creation session
+                    $_SESSION['connected']= $session;
+
+                    $_SESSION['username']= $session['username'];
+                    $_SESSION['picture']= $session['picture'];
+
+                    if($session['username'] == "admin")
+                    {
+                        $_SESSION['admin_username']= $session['username'];
+                        header("Location: index.php?location=adminHome");
+                    }
+                    else
+                    {
+                        header("Location: index.php?location=homePage");
+                    }
                 }
                 else
                 {
@@ -228,6 +249,14 @@ function loginCheck()
     require('View/login.php');
 }
 
+
+function logout()
+{
+    session_destroy();
+    $logout= true;
+    require("View/home.php");
+}
+
 function test()
 {
     $test= $_FILES['picture']['name'];
@@ -238,4 +267,88 @@ function test()
         $v= "non";
     //$test= "test";
     require('View/signup.php');
+}
+
+function adminHome()
+{   
+    require('View/adminHome.php');
+}
+
+function members()
+{
+    $members= allMembers();
+
+    require('View/members.php');
+}
+
+
+function contactUs()
+{
+    require('View/contactUs.php');
+}
+
+
+function contactCheck()
+{
+    $errors= [];
+    if(isset($_SESSION['connected']))
+    {
+
+    }
+    else
+    {
+        if(empty($_POST['firstName']))
+        {
+            $errors['firstName']= "Le nom est obligatoire";
+        }
+        if(empty($_POST['lastName']))
+        {
+            $errors['lastName']= "Le prénom est obligatoire";
+        }
+        if(empty($_POST['email']))
+        {
+            $errors['email']= "L'email est obligatoire";
+        }
+        else
+        {
+            $valid_email= "[a-z][a-z0-9]+@[a-z]+\.[a-z]+";
+            if(!preg_match("#$valid_email#", $_POST['email']))
+            {
+                $errors['email']= "Attention !!! Adresse mail invalide";
+            }
+        }
+        if(empty($_POST['message']))
+        {
+            $errors['message']= "Vous n'avez écrit aucun message";
+        }
+        if(empty($_POST['username']))
+        {
+            $errors['username']= "Le pseudo est obligatoire";
+        }
+
+        if(empty($errors))
+        {
+            $message= nl2br(htmlspecialchars($_POST['message']));
+            $insert= insertMessage($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['username'], $message);
+
+            if($insert === false)
+            {
+                $notSend= "Votre message n'a pas été envoyé";
+            }
+            else
+            {
+                $isSend= "Votre message a été envoyé";
+            }
+        }
+    }
+
+    require('View/contactUs.php');
+}
+
+
+function signal()
+{
+    $signal= allMessages();
+
+    require('View/signal.php');
 }
