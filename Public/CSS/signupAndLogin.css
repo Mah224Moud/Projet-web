@@ -1,0 +1,37 @@
+h1
+{
+    color: red;
+}
+body
+{
+    background-color: black;
+}
+
+a
+{
+    text-decoration: none;
+}
+.errors
+{
+    background-color: red;
+    color: whitesmoke;
+    padding: 2px 0;
+    padding-left: 15px;
+    border-radius: 15px;
+    width: 400px;  
+}
+
+input[type=text], input[type= date], input[type=file], input[type=password], input[type=email]
+{
+    border-radius: 15px;
+    padding: 5px;
+    text-align: center;
+}
+
+input[type=submit], input[type=reset]
+{
+    border-radius: 15px;
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+}
