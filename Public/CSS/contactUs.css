@@ -3,6 +3,11 @@ h2
     font-family: "Brush Script MT", cursive;
 }
 
+strong
+{
+    font-family: "Brush Script MT", cursive;
+    font-size: 25px;
+}
 textarea
 {
     resize: none;

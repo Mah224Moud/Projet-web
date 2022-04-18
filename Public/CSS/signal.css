@@ -18,6 +18,17 @@ button
     cursor: pointer;
 }
 
+.verified
+{
+    background-color: green;
+    cursor: none;
+}
+
+.not-verified
+{
+    background-color: red;
+}
+
 div em
 {
     color: rgb(255, 255, 255);
@@ -30,4 +41,6 @@ div em
     border-radius: 15px;
     -webkit-box-shadow: -8px 10px 16px -1px #000000; 
     box-shadow: -8px 10px 16px -1px #000000;
+
+    margin: 0 20%;
 }

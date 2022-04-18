@@ -20,7 +20,20 @@
     <h1>Bienvenue sur la page de contact</h1>
 
     <?php if(isset($_SESSION['connected'])): ?>
-        
+        <form action="index.php?location=contactCheck" method="post">
+            <fieldset>
+                <legend>Nous contacter</legend>
+                Salut <strong><em><?=$_SESSION['username']?></em></strong>, en quoi pouvons-nous vous aider ? <br>
+                <textarea name="message" id="" cols="35" rows="5" placeholder="Entrer votre message ici !!!"></textarea><br>
+                <?php if(isset($errors['message'])) :?>
+                    <p class="errors"><?=$errors['message']?></p>
+                <?php endif ?>
+
+                <input type="reset" value="Annuler"> <input type="submit" value="Envoyer"><br><br>
+            Tous les champs sont obligatoires <br>
+
+            </fieldset>
+        </form>
     <?php else:?>
         <form action="index.php?location=contactCheck" method="post">
             <fieldset>

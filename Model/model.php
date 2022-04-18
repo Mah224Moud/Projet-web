@@ -89,7 +89,7 @@ function allMembers()
 {
     $data_base= dataBaseConnexion();
 
-    $members= $data_base->query('SELECT id, username, firstName, lastName, picture, DATE_FORMAT(inscription_date, \'%d %b %Y\') AS date_ FROM members');
+    $members= $data_base->query('SELECT id, username, email, firstName, lastName, picture, DATE_FORMAT(inscription_date, \'%d %b %Y\') AS date_ FROM members');
     $members->execute();
 
     return $members;
@@ -111,8 +111,31 @@ function allMessages()
 {
     $data_base= dataBaseConnexion();
 
-    $message= $data_base->query('SELECT id, username, email, status_, firstName, lastName, messages , DATE_FORMAT(message_date, \'%d %b %Y à %Hh:%imin\') AS date_ FROM messages');
+    $message= $data_base->query('SELECT id, username, email, status_, firstName, lastName, messages , DATE_FORMAT(message_date, \'%d %b %Y à %Hh:%imin\') AS date_ FROM messages ORDER BY id desc');
     $message->execute();
 
     return $message;
+}
+
+
+
+function signalStatus($id)
+{
+    $data_base= dataBaseConnexion();
+
+    $update= $data_base->prepare("UPDATE messages SET status_= 'verified' WHERE messages.id = ? ");
+    $update->execute([$id]);
+
+    return $update;
+}
+
+
+function deleteMember($id)
+{
+    $data_base= dataBaseConnexion();
+
+    $delete= $data_base->prepare("DELETE FROM members WHERE id = ? ");
+    $delete->execute([$id]);
+
+    return $delete;
 }

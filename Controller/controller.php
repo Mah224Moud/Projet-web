@@ -224,6 +224,9 @@ function loginCheck()
 
                     $_SESSION['username']= $session['username'];
                     $_SESSION['picture']= $session['picture'];
+                    $_SESSION['firstName']= $session['firstName'];
+                    $_SESSION['lastName']= $session['lastName'];
+                    $_SESSION['email']= $session['email'];
 
                     if($session['username'] == "admin")
                     {
@@ -257,17 +260,6 @@ function logout()
     require("View/home.php");
 }
 
-function test()
-{
-    $test= $_FILES['picture']['name'];
-
-    if($test == "" )
-        $v = "vide";
-    else
-        $v= "non";
-    //$test= "test";
-    require('View/signup.php');
-}
 
 function adminHome()
 {   
@@ -293,7 +285,23 @@ function contactCheck()
     $errors= [];
     if(isset($_SESSION['connected']))
     {
-
+        if(empty($_POST['message']))
+        {
+            $errors['message']= "Vous n'avez écrit aucun message";
+        }
+        if(empty($errors))
+        {
+            $message= nl2br(htmlspecialchars($_POST['message']));
+            $insert= insertMessage($_SESSION['firstName'], $_SESSION['lastName'], $_SESSION['email'], $_SESSION['username'], $message);
+            if($insert === false)
+            {
+                $notSend= "Votre message n'a pas été envoyé";
+            }
+            else
+            {
+                $isSend= "Votre message a été envoyé";
+            }
+        }
     }
     else
     {
@@ -349,6 +357,43 @@ function contactCheck()
 function signal()
 {
     $signal= allMessages();
-
+    $members= allMembers();
+    $emails= [];
+    foreach($members as $member)
+    {
+        array_push($emails, $member['email']);
+    }
+    
     require('View/signal.php');
+}
+
+
+function addUser($status)
+{
+    if ($status===false)
+        $report= "Il y'a eu une erreur lors de la création du compte";
+    else
+    {
+        $report= "Compte créer avec succes";
+    }
+    require('View/addUser.php');
+}
+
+
+function signalUpdate($id)
+{
+    $signalStatus= signalStatus($id);
+
+    $confirm= "Problème résolu";
+    require('View/signal.php');
+    //header("Location: index.php?location=signal");
+}
+
+
+function memberDelete($id)
+{
+    $signalStatus= deleteMember($id);
+
+    $confirm= "Utilisateur supprimer";
+    require('View/members.php');
 }

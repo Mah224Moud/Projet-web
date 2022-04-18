@@ -61,6 +61,23 @@ if(isset($_GET['location']))
             signal();
             break;
 
+        case $_GET['location'] == "addUser":
+            $password= password_hash("default", PASSWORD_DEFAULT);
+            $age= "2000-01-01";
+            $gender= "default";
+            $pic= "./Public/Image/unknow.png";
+
+            $inscriptionMember= inscriptionMember($gender, $_GET['firstName'], $_GET['lastName'], $age, $pic, $_GET['email'], $_GET['username'], $password); 
+
+            addUser($inscriptionMember);
+            break;
+
+        case $_GET['location'] == "signalUpate":
+            signalUpdate($_GET['idSignal']);
+            break;
+
+        case $_GET['location'] == "memberDelete":
+           memberDelete($_GET['idUser']);
         default:
             homePage();
             break;
