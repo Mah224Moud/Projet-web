@@ -118,7 +118,6 @@ function allMessages()
 }
 
 
-
 function signalStatus($id)
 {
     $data_base= dataBaseConnexion();
@@ -138,4 +137,43 @@ function deleteMember($id)
     $delete->execute([$id]);
 
     return $delete;
+}
+
+
+function deleteMessage($id)
+{
+    $data_base= dataBaseConnexion();
+
+    $delete= $data_base->prepare("DELETE FROM messages WHERE id = ? ");
+    $delete->execute([$id]);
+
+    return $delete;
+}
+
+
+
+function totalMessage()
+{
+    $data_base= dataBaseConnexion();
+
+    $number= $data_base->prepare("SELECT COUNT(*) AS total FROM messages");
+    $number->execute();
+
+    $total= $number->fetch();
+
+    return $total;
+}
+
+
+
+function totalMembers()
+{
+    $data_base= dataBaseConnexion();
+
+    $number= $data_base->prepare("SELECT COUNT(*) AS total FROM members");
+    $number->execute();
+
+    $total= $number->fetch();
+
+    return $total;
 }

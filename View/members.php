@@ -15,6 +15,12 @@
     <?php endif ?>
     <h1>Bienvenue sur la page de liste des membres</h1>
     <h2><a href="index.php?location=adminHome">Accueil</a> > Membres</h2>
+
+    <?php if(isset($total)): ?>
+        <h2 class="total">Il y'a <?=$total['total']?> membres</h2>
+    <?php endif?>
+
+
     <?php if(isset($members)):?>
         <?php while($data= $members->fetch()) :?>
             <?php if($data['username'] != "admin"): ?>
@@ -31,5 +37,8 @@
         window.location.replace("index.php?location=allMembers");
     </script>
     <?php endif ?>
+
+    
+
 </body>
 </html>

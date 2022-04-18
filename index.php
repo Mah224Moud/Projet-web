@@ -78,6 +78,13 @@ if(isset($_GET['location']))
 
         case $_GET['location'] == "memberDelete":
            memberDelete($_GET['idUser']);
+
+
+        case $_GET['location'] == "messageDelete":
+
+            messageDelete($_GET['idMessage']);
+            break;
+            
         default:
             homePage();
             break;

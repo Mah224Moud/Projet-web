@@ -15,6 +15,11 @@
     <?php endif ?>
     <h1>Bienvenue sur la page des messages de contact</h1>
     <h2><a href="index.php?location=adminHome">Accueil</a> > Messages contact</h2>
+
+    <?php if(isset($total)): ?>
+        <h2 class="total">Il y'a <?=$total['total']?> messages</h2>
+    <?php endif?>
+
     <?php if(isset($signal)):?>
         <?php while($data= $signal->fetch()) :?>
             <div class="message">
@@ -32,6 +37,7 @@
                 <?php if(!in_array($data['email'], $emails)) :?>
                     <a href="index.php?location=addUser&firstName=<?=$data['firstName']?>&lastName=<?=$data['lastName']?>&email=<?=$data['email']?>&username=<?=$data['username']?>"><button>Ajouter</button></a>
                 <?php endif ?>
+                <a href="index.php?location=messageDelete&idMessage=<?=$data['id']?>"><button>Supprimer</button></a>
             </div><br>
         <?php endwhile?>
     <?php endif ?>
@@ -39,6 +45,12 @@
 
     <?php if(isset($confirm)): ?>
         <script>alert("<?=$confirm?>");
+        window.location.replace("index.php?location=signal");
+    </script>
+    <?php endif ?>
+
+    <?php if(isset($deleteMessage)): ?>
+        <script>alert("<?=$deleteMessage?>");
         window.location.replace("index.php?location=signal");
     </script>
     <?php endif ?>

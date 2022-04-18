@@ -269,7 +269,7 @@ function adminHome()
 function members()
 {
     $members= allMembers();
-
+    $total= totalMembers();
     require('View/members.php');
 }
 
@@ -364,6 +364,7 @@ function signal()
         array_push($emails, $member['email']);
     }
     
+    $total= totalMessage();
     require('View/signal.php');
 }
 
@@ -397,3 +398,14 @@ function memberDelete($id)
     $confirm= "Utilisateur supprimer";
     require('View/members.php');
 }
+
+
+
+function messageDelete($id)
+{
+    $signalStatus= deleteMessage($id);
+
+    $deleteMessage= "Vous avez supprimer un message";
+    require('View/signal.php');
+}
+
