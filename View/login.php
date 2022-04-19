@@ -11,7 +11,13 @@
 <body>
     <?php require('header.php'); ?>
 
+    <?php if(!isset($_SESSION['connected'])) :?>
+        <h2><em>Vous n'êtes pas connecté</em></h2>
+    <?php endif ?>
+
     <h1>Bienvenue sur la page de connexion</h1>
+
+    <h2><a href="index.php?location=home">Accueil</a> > Connexion</h2>
 
     <form action="index.php?location=loginCheck" method="post">
         <?php if(isset($errors['not_existed_mail'])) :?>

@@ -19,6 +19,8 @@
 
     <h1>Bienvenue sur la page de contact</h1>
 
+    <h2><a href="index.php?location=home">Accueil</a> > Nous contacter</h2>
+
     <?php if(isset($_SESSION['connected'])): ?>
         <form action="index.php?location=contactCheck" method="post">
             <fieldset>

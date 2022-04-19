@@ -227,6 +227,7 @@ function loginCheck()
                     $_SESSION['firstName']= $session['firstName'];
                     $_SESSION['lastName']= $session['lastName'];
                     $_SESSION['email']= $session['email'];
+                    $_SESSION['id']= $session['id'];
 
                     if($session['username'] == "admin")
                     {
@@ -409,3 +410,43 @@ function messageDelete($id)
     require('View/signal.php');
 }
 
+function forum()
+{
+    $questions= allQuestions();
+    $total= totalQuestions();
+    require('View/forum.php');
+}
+
+function questions()
+{
+    $errors= [];
+    if(empty($_POST['title']))
+    {
+        $errors['title']= "Le titre est obligatoire";
+    }
+    if(empty($_POST['content']))
+    {
+        $errors['content']= "Le contenu est obligatoire";
+    }
+
+    if(empty($errors))
+    {
+        if(isset($_SESSION['connected']))
+        {
+            $addQuestion= addQuestion($_SESSION['id'], $_POST['title'], $_POST['content']);
+
+            if($addQuestion === false)
+            {
+                $status= "Votre question n'a pas été ajouté";
+            }
+            else
+            {
+                $status= "Votre question a été ajouté";
+            }
+        }
+    }
+    $questions= allQuestions();
+    $total= totalQuestions();
+    
+    require('View/forum.php');
+}

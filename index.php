@@ -19,7 +19,6 @@ if(isset($_GET['location']))
             break;
 
         case $_GET['location'] == "signUpCheck":
-            //$info= inscriptionMember($_POST['gender'], $_POST['firstName'], $_POST['lastName'], $_POST['birthday'], $_POST['picture'], $_POST['email'], $_POST['username'], $_POST['password']);
             signUpCheck();
             break;
         
@@ -81,9 +80,18 @@ if(isset($_GET['location']))
 
 
         case $_GET['location'] == "messageDelete":
-
             messageDelete($_GET['idMessage']);
             break;
+            
+
+        case $_GET['location'] == "forum":
+            forum();
+            break;
+
+        case $_GET['location'] == "questions":
+            questions();
+            break;
+
             
         default:
             homePage();

@@ -6,7 +6,9 @@
         <li>
             <a href="">Cours</a>
         </li>
-        <li>Forum</li>
+        <li>
+            <a href="index.php?location=forum">Forum</a>
+        </li>
         <?php if(isset($_SESSION['connected'])) : ?>
             <li class="picture">
                 <a href="">

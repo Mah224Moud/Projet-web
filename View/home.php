@@ -25,7 +25,7 @@
         <a href="">
             Cours
         </a>
-        <a href="">
+        <a href="index.php?location=forum">
             Forum
         </a>
         <?php if(isset($_SESSION['connected'])) :?>

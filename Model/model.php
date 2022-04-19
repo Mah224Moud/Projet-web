@@ -177,3 +177,42 @@ function totalMembers()
 
     return $total;
 }
+
+
+function allQuestions()
+{
+    $data_base= dataBaseConnexion();
+
+    $members= $data_base->query('SELECT questions.id as id, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y\') AS date_ FROM members, questions WHERE questions.userID= members.id ORDER BY id desc');
+    $members->execute();
+
+    return $members;
+}
+
+
+function addQuestion($userID, $title, $content)
+{
+    $data_base= dataBaseConnexion();
+    $addQuestion= $data_base->prepare("INSERT INTO questions (userID, title, content) VALUES (?, ?, ?)");
+    $addQuestion->execute([$userID, $title, $content]);
+
+    return $addQuestion;
+}
+
+
+function totalQuestions()
+{
+    $data_base= dataBaseConnexion();
+
+    $number= $data_base->prepare("SELECT COUNT(*) AS total FROM questions");
+    $number->execute();
+
+    $total= $number->fetch();
+
+    return $total;
+}
+
+
+/*
+SELECT * FROM questions, members WHERE members.id= questions.userID
+*/

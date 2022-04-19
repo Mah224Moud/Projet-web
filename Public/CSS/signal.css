@@ -21,7 +21,7 @@ button
 .verified
 {
     background-color: green;
-    cursor: none;
+    cursor: default;
 }
 
 .not-verified

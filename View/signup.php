@@ -13,6 +13,8 @@
 
     <h1>Bienvenue sur la page d'inscription</h1>
 
+    <h2><a href="index.php?location=home">Accueil</a> > <a href="index.php?location=login">Connexion</a> > Inscription</h2>
+
     <form action="index.php?location=signUpCheck" method="POST" enctype="multipart/form-data">
         <?php if(isset($errors['existed_mail'])) :?>
             <p class="errors"><?=$errors['existed_mail']?></p>
