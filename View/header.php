@@ -11,7 +11,7 @@
         </li>
         <?php if(isset($_SESSION['connected'])) : ?>
             <li class="picture">
-                <a href="">
+                <a href="index.php?location=profile">
                     <img src="<?=$_SESSION['picture']?>" alt="">
                     <div id="green_light"></div>
                 </a>

@@ -77,7 +77,7 @@ function sessionMember($email)
 {
     $data_base= dataBaseConnexion();
 
-    $session= $data_base->prepare("SELECT * FROM members WHERE email=?");
+    $session= $data_base->prepare('SELECT id, firstName, lastName, DATE_FORMAT(birthday, \'%d %b %Y\') AS birthday_, email, username, picture, gender, DATE_FORMAT(inscription_date, \'%d %b %Y\') AS date_ FROM members WHERE email=?');
     $session->execute([$email]);
 
     $getSession= $session->fetch();
@@ -183,7 +183,7 @@ function allQuestions()
 {
     $data_base= dataBaseConnexion();
 
-    $members= $data_base->query('SELECT questions.id as id, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y\') AS date_ FROM members, questions WHERE questions.userID= members.id ORDER BY id desc');
+    $members= $data_base->query('SELECT questions.id as id, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y à %H:%i\') AS date_ FROM members, questions WHERE questions.userID= members.id ORDER BY id desc');
     $members->execute();
 
     return $members;
@@ -213,6 +213,47 @@ function totalQuestions()
 }
 
 
-/*
-SELECT * FROM questions, members WHERE members.id= questions.userID
-*/
+function singleQuestion($idQuestion)
+{
+    $data_base= dataBaseConnexion();
+    $question= $data_base->prepare('SELECT questions.id as id, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y à %H:%i\') AS date_ FROM members, questions WHERE questions.userID= members.id AND questions.id =?');
+    $question->execute([$idQuestion]);
+
+    $questions= $question->fetch();
+
+    return $questions;
+}
+
+
+function addComment($idQuestion, $idUser, $comment)
+{
+    $data_base= dataBaseConnexion();
+
+    $addComment= $data_base->prepare("INSERT INTO comments (questionID, userID, comment) VALUES(?, ?, ?)");
+    $addComment->execute([$idQuestion, $idUser, $comment]);
+
+    return $addComment;
+}
+
+
+function allComments($idQuestion)
+{
+    $data_base= dataBaseConnexion();
+    $comments= $data_base->prepare('SELECT id, questionID, userID, comment, DATE_FORMAT(comment_date, \'%d %b %Y à %H:%i\') AS date_ FROM comments WHERE questionID= ?');
+    $comments->execute([$idQuestion]);
+
+    return $comments;
+}
+
+
+
+
+function identifiedMember($idUser)
+{
+    $data_base= dataBaseConnexion();
+    $members= $data_base->prepare('SELECT username, picture FROM members WHERE id=?' );
+    $members->execute([$idUser]);
+
+    $user= $members->fetch();
+    return $user;
+}

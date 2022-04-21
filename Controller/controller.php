@@ -228,6 +228,8 @@ function loginCheck()
                     $_SESSION['lastName']= $session['lastName'];
                     $_SESSION['email']= $session['email'];
                     $_SESSION['id']= $session['id'];
+                    $_SESSION['birthday']= $session['birthday_'];
+                    $_SESSION['inscription_date']= $session['date_'];
 
                     if($session['username'] == "admin")
                     {
@@ -433,7 +435,9 @@ function questions()
     {
         if(isset($_SESSION['connected']))
         {
-            $addQuestion= addQuestion($_SESSION['id'], $_POST['title'], $_POST['content']);
+            $title= htmlspecialchars($_POST['title']);
+            $content= nl2br(htmlspecialchars($_POST['content']));
+            $addQuestion= addQuestion($_SESSION['id'], $title, $content);
 
             if($addQuestion === false)
             {
@@ -449,4 +453,45 @@ function questions()
     $total= totalQuestions();
     
     require('View/forum.php');
+}
+
+
+function question($idQuestion)
+{
+    $question= singleQuestion($idQuestion);
+
+    $allComments = allComments($idQuestion);
+    require('View/comment.php');
+}
+
+
+function publishComment($idQuestion, $idUser)
+{
+    $errors= [];
+    if(empty($_POST['content']))
+    {
+        $errors['content']= "Vous n'avez écrit aucun commentaire";
+    }
+    else
+    {
+        $content= nl2br(htmlspecialchars($_POST['content']));
+        $addComment = addComment($idQuestion, $idUser, $content);
+        if($addComment===false)
+        {
+            $status= "Votre commentaire n'a pas été ajouté";
+        }
+        else
+            $status= "Votre commentaire a été ajouté";
+    }
+
+    $question= singleQuestion($idQuestion);
+    $allComments = allComments($idQuestion);
+    require('View/comment.php');
+}
+
+
+
+function profile()
+{
+    require('View/profile.php');
 }

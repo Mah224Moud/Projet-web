@@ -24,7 +24,7 @@
 
     
     <?php if(isset($_SESSION['connected'])) :?>
-        <h2>Créer une question</h2>
+        <h2 class="info-form">Créer une question</h2>
         <form action="index.php?location=questions" method="post">
             <fieldset>
                 <label for="">Titre: </label><input type="text" name="title" id="" placeholder="Titre"><br>
@@ -59,7 +59,7 @@
                         <div class="content">
                             <strong><em><?=$data['title']?></em></strong>
                             <?=$data['content']?>
-                            <a href="">Commentaires</a>
+                            <a href="index.php?location=comment&idComment=<?=$data['id']?>">Commentaires</a>
                         </div>
                     </div>
                     <div class="info">

@@ -1,0 +1,85 @@
+h1
+{
+    text-align: center;
+    font-family: "Brush Script MT", cursive;
+}
+
+
+h2
+{
+    font-family: "Brush Script MT", cursive;
+}
+
+img
+{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#test
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+
+
+#profile
+{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+    margin: 10px 0;
+}
+
+#me
+{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+
+#me img
+{
+    margin: 10px 0;
+}
+
+
+#about,#courses, #infos, #me
+{
+    margin: 10px 100px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    -webkit-box-shadow: -7px 7px 15px 5px #000000; 
+    box-shadow: -7px 7px 15px 5px #000000;
+    border: 1px solid red;
+}
+
+#button
+{
+    position: relative;
+    height: 10px;
+}
+
+#button #modify
+{
+    position: absolute;
+    right: 240px;
+    border-radius: 10px;
+}
+#button #disconnect
+{
+    position: absolute;
+    border-radius: 10px;
+    right: 140px;
+}
