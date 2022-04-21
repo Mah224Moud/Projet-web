@@ -239,7 +239,7 @@ function addComment($idQuestion, $idUser, $comment)
 function allComments($idQuestion)
 {
     $data_base= dataBaseConnexion();
-    $comments= $data_base->prepare('SELECT id, questionID, userID, comment, DATE_FORMAT(comment_date, \'%d %b %Y à %H:%i\') AS date_ FROM comments WHERE questionID= ?');
+    $comments= $data_base->prepare('SELECT id, questionID, userID, comment, DATE_FORMAT(comment_date, \'%d %b %Y à %H:%i\') AS date_ FROM comments WHERE questionID= ? ORDER BY id desc');
     $comments->execute([$idQuestion]);
 
     return $comments;
@@ -256,4 +256,16 @@ function identifiedMember($idUser)
 
     $user= $members->fetch();
     return $user;
+}
+
+
+function numberCommentsforEachQuestion($idQuestion)
+{
+    $data_base= dataBaseConnexion();
+    $number= $data_base->prepare("SELECT COUNT(*) as total FROM `comments` WHERE questionID= ?");
+    $number->execute([$idQuestion]);
+
+    $total= $number->fetch();
+
+    return $total;
 }

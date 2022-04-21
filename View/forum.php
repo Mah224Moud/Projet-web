@@ -59,7 +59,8 @@
                         <div class="content">
                             <strong><em><?=$data['title']?></em></strong>
                             <?=$data['content']?>
-                            <a href="index.php?location=comment&idComment=<?=$data['id']?>">Commentaires</a>
+                            <?php $totalComments= numberCommentsforEachQuestion($data['id']);?>
+                            <p><a href="index.php?location=comment&idComment=<?=$data['id']?>"><?=$totalComments['total']?> Commentaires</a></p>
                         </div>
                     </div>
                     <div class="info">
@@ -67,13 +68,18 @@
                         publié le <?=$data['date_']?>
                     </div>
                 </div>   
+
+                
             <?php endwhile ?>
         </div> 
     <?php endif?>
 
 
     <?php if(isset($status)): ?>
-        <script>alert("<?=$status?>")</script>
+        <script>
+            alert("<?=$status?>");
+            window.location.replace('index.php?location=forum');
+        </script>
     <?php endif ?>
 </body>
 </html>

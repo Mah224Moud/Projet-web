@@ -74,7 +74,10 @@
 
 
     <?php if(isset($status)): ?>
-        <script>alert("<?=$status?>");</script>
+        <script>
+            alert("<?=$status?>");
+            window.location.replace('index.php?location=comment&idComment=<?=$question['id']?>');
+        </script>
     <?php endif ?>
 </body>
 </html>
