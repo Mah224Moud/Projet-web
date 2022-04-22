@@ -495,3 +495,40 @@ function profile()
 {
     require('View/profile.php');
 }
+
+
+
+function deletedQuestion($idQuestion)
+{
+    $deleteQuestion=deleteQuestion($idQuestion);
+
+    if($deleteQuestion === false)
+    {
+        $statusDeletedQuestion= "Question non supprimé";
+    }
+    else
+        $statusDeletedQuestion= "Question supprimé";
+
+    require('View/forum.php');
+}
+
+
+
+
+function deletedComment($idComment, $idQuestion)
+{
+    $deleteComment=deleteComment($idComment);
+
+    if($deleteComment === false)
+    {
+        $statusDeletedComment= "Commentaire non supprimé";
+        $id= $idQuestion;
+    }
+    else
+    {
+        $statusDeletedComment= "Commentaire supprimé";
+        $id= $idQuestion;
+    }
+
+    require('View/comment.php');
+}

@@ -67,6 +67,11 @@
                     <strong><?=$member['username']?></strong><br>
                     publié le <?=$comments['date_']?>
                 </div>
+                <?php if(isset($_SESSION['connected']) && $_SESSION['id'] == $member['id']): ?>
+                    <div class="delete">
+                        <a href="index.php?location=deleteComment&idComment=<?=$comments['id']?>&idQuestion=<?=$question['id']?>"><button>Supprimer</button></a>
+                    </div>
+                <?php endif?>
             </div>
         <div>  
         <?php endwhile?>
@@ -76,7 +81,13 @@
     <?php if(isset($status)): ?>
         <script>
             alert("<?=$status?>");
-            window.location.replace('index.php?location=comment&idComment=<?=$question['id']?>');
+            window.location.replace('index.php?location=comment&idQuestion=<?=$question['id']?>');
+        </script>
+    <?php endif ?>
+    <?php if(isset($statusDeletedComment)): ?>
+        <script>
+            alert("<?=$statusDeletedComment?>");
+            window.location.replace('index.php?location=comment&idQuestion=<?=$id?>');
         </script>
     <?php endif ?>
 </body>

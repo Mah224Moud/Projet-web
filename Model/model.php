@@ -183,7 +183,7 @@ function allQuestions()
 {
     $data_base= dataBaseConnexion();
 
-    $members= $data_base->query('SELECT questions.id as id, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y à %H:%i\') AS date_ FROM members, questions WHERE questions.userID= members.id ORDER BY id desc');
+    $members= $data_base->query('SELECT questions.id as id, userID, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y à %H:%i\') AS date_ FROM members, questions WHERE questions.userID= members.id ORDER BY id desc');
     $members->execute();
 
     return $members;
@@ -251,7 +251,7 @@ function allComments($idQuestion)
 function identifiedMember($idUser)
 {
     $data_base= dataBaseConnexion();
-    $members= $data_base->prepare('SELECT username, picture FROM members WHERE id=?' );
+    $members= $data_base->prepare('SELECT id, username, picture FROM members WHERE id=?' );
     $members->execute([$idUser]);
 
     $user= $members->fetch();
@@ -268,4 +268,25 @@ function numberCommentsforEachQuestion($idQuestion)
     $total= $number->fetch();
 
     return $total;
+}
+
+
+
+function deleteQuestion($idQuestion)
+{
+    $data_base= dataBaseConnexion();
+    $question= $data_base->prepare("DELETE FROM questions WHERE id=?");
+    $question->execute([$idQuestion]);
+
+    return $question;
+}
+
+
+function deleteComment($idComment)
+{
+    $data_base= dataBaseConnexion();
+    $comment= $data_base->prepare("DELETE FROM comments WHERE id=?");
+    $comment->execute([$idComment]);
+
+    return $comment;
 }

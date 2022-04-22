@@ -88,3 +88,28 @@ textarea
     height: 82vh;
     margin: 0 150px;
 }
+
+
+
+.delete
+{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.delete a button
+{
+    transition: ease-in-out 1s;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.delete a button:hover
+{
+    
+    color: whitesmoke;
+    background-color: red;
+    transition: ease-in-out 1s;
+}

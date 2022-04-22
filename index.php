@@ -93,8 +93,8 @@ if(isset($_GET['location']))
             break;
 
         case $_GET['location'] == "comment":
-            if(isset($_GET['idComment']) && $_GET['idComment']>0)
-                question($_GET['idComment']);
+            if(isset($_GET['idQuestion']) && $_GET['idQuestion']>0)
+                question($_GET['idQuestion']);
             else
                 forum();
             break;
@@ -102,11 +102,21 @@ if(isset($_GET['location']))
         case $_GET['location'] == "publishComment":
             if(isset($_GET['idQuestion']) && $_GET['idQuestion']>0)
                 publishComment($_GET['idQuestion'], $_GET['idUser']);
-                //echo "idquestion".$_GET['idQuestion']." et idU ".$_GET['idUser'];
             break;
 
         case $_GET['location'] == "profile":
             profile();
+            break;
+
+        case $_GET['location'] == "deleteQuestion":
+            if(isset($_GET['idQuestion']) && $_GET['idQuestion']>0)
+                deletedQuestion($_GET['idQuestion']);
+            break;
+
+
+        case $_GET['location'] == "deleteComment":
+            if(isset($_GET['idComment']) && $_GET['idComment']>0)
+                deletedComment($_GET['idComment'], $_GET['idQuestion']);
             break;
 
         default:

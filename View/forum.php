@@ -60,16 +60,19 @@
                             <strong><em><?=$data['title']?></em></strong>
                             <?=$data['content']?>
                             <?php $totalComments= numberCommentsforEachQuestion($data['id']);?>
-                            <p><a href="index.php?location=comment&idComment=<?=$data['id']?>"><?=$totalComments['total']?> Commentaires</a></p>
+                            <p><a href="index.php?location=comment&idQuestion=<?=$data['id']?>"><?=$totalComments['total']?> Commentaires</a></p>
                         </div>
                     </div>
                     <div class="info">
                         <strong><?=$data['username']?></strong><br>
                         publié le <?=$data['date_']?>
                     </div>
+                    <?php if(isset($_SESSION['connected']) && $_SESSION['id'] == $data['userID']): ?>
+                        <div class="delete">
+                        <a href="index.php?location=deleteQuestion&idQuestion=<?=$data['id']?>"><button>Supprimer</button></a>
+                        </div>
+                    <?php endif?>
                 </div>   
-
-                
             <?php endwhile ?>
         </div> 
     <?php endif?>
@@ -78,6 +81,12 @@
     <?php if(isset($status)): ?>
         <script>
             alert("<?=$status?>");
+            window.location.replace('index.php?location=forum');
+        </script>
+    <?php endif ?>
+    <?php if(isset($statusDeletedQuestion)): ?>
+        <script>
+            alert("<?=$statusDeletedQuestion?>");
             window.location.replace('index.php?location=forum');
         </script>
     <?php endif ?>
