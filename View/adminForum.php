@@ -25,26 +25,28 @@
     <?php endif?>
     <?php if(isset($questions)): ?>
         <div class="all">
-            <?php while($data= $questions->fetch()) : ?>
-                <div class="questions">
-                    <div class="question">
-                        <img class="pic" src="<?=$data['picture']?>" alt="">
-                        <div class="content">
-                            <strong><em><?=$data['title']?></em></strong>
-                            <?=$data['content']?>
-                            <?php $totalComments= numberCommentsforEachQuestion($data['id']);?>
-                            <p><a href="index.php?location=adminComment&idQuestion=<?=$data['id']?>"><?=$totalComments['total']?> Commentaires</a></p>
+            <div id="refresh">
+                <?php while($data= $questions->fetch()) : ?>
+                    <div class="questions">
+                        <div class="question">
+                            <img class="pic" src="<?=$data['picture']?>" alt="">
+                            <div class="content">
+                                <strong><em><?=$data['title']?></em></strong>
+                                <?=$data['content']?>
+                                <?php $totalComments= numberCommentsforEachQuestion($data['id']);?>
+                                <p><a href="index.php?location=adminComment&idQuestion=<?=$data['id']?>"><?=$totalComments['total']?> Commentaires</a></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info">
-                        <strong><?=$data['username']?></strong><br>
-                        publié le <?=$data['date_']?>
-                    </div>
-                    <div class="delete">
-                        <a href="index.php?location=deleteQuestionByAdmin&idQuestion=<?=$data['id']?>"><button>Supprimer</button></a>
-                    </div>
-                </div>   
-            <?php endwhile ?>
+                        <div class="info">
+                            <strong><?=$data['username']?></strong><br>
+                            publié le <?=$data['date_']?>
+                        </div>
+                        <div class="delete">
+                            <a href="index.php?location=deleteQuestionByAdmin&idQuestion=<?=$data['id']?>"><button>Supprimer</button></a>
+                        </div>
+                    </div>   
+                <?php endwhile ?>
+            </div>
         </div> 
     <?php endif?>
 
@@ -55,5 +57,15 @@
             window.location.replace('index.php?location=adminForum');
         </script>
     <?php endif ?>
+
+    <script src="./Public/JS/jquery.js"></script>
+    <script>
+        $(document).ready(()=>{
+            $('#refresh').load(location.href + " #refresh");
+                setInterval(function(){
+                    $('#refresh').load(location.href + " #refresh");
+                }, 1000);
+        })
+    </script>
 </body>
 </html>

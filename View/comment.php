@@ -54,27 +54,29 @@
 
     <?php if(isset($allComments)): ?>
         <div class="all">
-        <?php while($comments= $allComments->fetch()): ?>
-            <?php $member=  identifiedMember($comments['userID']);?>
-            <div class="questions">
-                <div class="question">
-                    <img class="pic" src="<?=$member['picture']?>" alt="">
-                    <div class="content-comment">
-                        <?=$comments['comment']?>
+            <div id="refresh">
+                <?php while($comments= $allComments->fetch()): ?>
+                    <?php $member=  identifiedMember($comments['userID']);?>
+                    <div class="questions">
+                        <div class="question">
+                            <img class="pic" src="<?=$member['picture']?>" alt="">
+                            <div class="content-comment">
+                                <?=$comments['comment']?>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <strong><?=$member['username']?></strong><br>
+                            publié le <?=$comments['date_']?>
+                        </div>
+                        <?php if(isset($_SESSION['connected']) && $_SESSION['id'] == $member['id']): ?>
+                            <div class="delete">
+                                <a href="index.php?location=deleteComment&idComment=<?=$comments['id']?>&idQuestion=<?=$question['id']?>"><button>Supprimer</button></a>
+                            </div>
+                        <?php endif?>
                     </div>
-                </div>
-                <div class="info">
-                    <strong><?=$member['username']?></strong><br>
-                    publié le <?=$comments['date_']?>
-                </div>
-                <?php if(isset($_SESSION['connected']) && $_SESSION['id'] == $member['id']): ?>
-                    <div class="delete">
-                        <a href="index.php?location=deleteComment&idComment=<?=$comments['id']?>&idQuestion=<?=$question['id']?>"><button>Supprimer</button></a>
-                    </div>
-                <?php endif?>
+                <?php endwhile?>
             </div>
-        <div>  
-        <?php endwhile?>
+        </div>  
     <?php endif ?>
 
 
@@ -90,5 +92,16 @@
             window.location.replace('index.php?location=comment&idQuestion=<?=$id?>');
         </script>
     <?php endif ?>
+
+
+    <script src="./Public/JS/jquery.js"></script>
+    <script>
+        $(document).ready(()=>{
+            $('#refresh').load(location.href + " #refresh");
+                setInterval(function(){
+                    $('#refresh').load(location.href + " #refresh");
+                }, 1000);
+        })
+    </script>
 </body>
 </html>
