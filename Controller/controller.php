@@ -532,3 +532,56 @@ function deletedComment($idComment, $idQuestion)
 
     require('View/comment.php');
 }
+
+
+
+
+function adminForum()
+{
+    $questions= allQuestions();
+    $total= totalQuestions();
+    require('View/adminForum.php');
+}
+
+
+function deletedQuestionByAdmin($idQuestion)
+{
+    $deleteQuestion=deleteQuestion($idQuestion);
+
+    if($deleteQuestion === false)
+    {
+        $statusDeletedQuestion= "Question non supprimé";
+    }
+    else
+        $statusDeletedQuestion= "Question supprimé par admin";
+
+    require('View/adminForum.php');
+}
+
+
+function questionAdminSide($idQuestion)
+{
+    $question= singleQuestion($idQuestion);
+
+    $allComments = allComments($idQuestion);
+    require('View/adminComment.php');
+}
+
+
+function deletedCommentByAdmin($idComment, $idQuestion)
+{
+    $deleteComment=deleteComment($idComment);
+
+    if($deleteComment === false)
+    {
+        $statusDeletedComment= "Commentaire non supprimé";
+        $id= $idQuestion;
+    }
+    else
+    {
+        $statusDeletedComment= "Commentaire supprimé par admin";
+        $id= $idQuestion;
+    }
+
+    require('View/adminComment.php');
+}

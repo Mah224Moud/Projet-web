@@ -119,6 +119,31 @@ if(isset($_GET['location']))
                 deletedComment($_GET['idComment'], $_GET['idQuestion']);
             break;
 
+
+        case $_GET['location'] == "adminForum":
+            adminForum();
+            break;
+
+
+        case $_GET['location'] == "deleteQuestionByAdmin":
+            if(isset($_GET['idQuestion']) && $_GET['idQuestion']>0)
+                deletedQuestionByAdmin($_GET['idQuestion']);
+            break;
+
+
+        case $_GET['location'] == "adminComment":
+            if(isset($_GET['idQuestion']) && $_GET['idQuestion']>0)
+                questionAdminSide($_GET['idQuestion']);
+            else
+                adminForum();
+            break;
+
+
+        case $_GET['location'] == "deleteCommentByAdmin":
+            if(isset($_GET['idComment']) && $_GET['idComment']>0)
+            deletedCommentByAdmin($_GET['idComment'], $_GET['idQuestion']);
+            break;
+
         default:
             homePage();
             break;
