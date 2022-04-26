@@ -144,6 +144,14 @@ if(isset($_GET['location']))
             deletedCommentByAdmin($_GET['idComment'], $_GET['idQuestion']);
             break;
 
+        case $_GET['location'] == "modify":
+            modify();
+            break;
+
+        case $_GET['location'] == 'updated':
+            applyModification();
+            break;
+
         default:
             homePage();
             break;

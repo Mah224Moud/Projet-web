@@ -290,3 +290,45 @@ function deleteComment($idComment)
 
     return $comment;
 }
+
+
+
+
+function updateFirstName($fisrtName, $idUser)
+{
+    $data_base= dataBaseConnexion();
+    $update= $data_base->prepare("UPDATE members SET firstName='$fisrtName' WHERE id=?");
+    $update->execute([$idUser]);
+
+    return $update;
+}
+
+
+function updateLastName($lastName, $idUser)
+{
+    $data_base= dataBaseConnexion();
+    $update= $data_base->prepare("UPDATE members SET lastName='$lastName' WHERE id=?");
+    $update->execute([$idUser]);
+
+    return $update;
+}
+
+
+function updatePassword($password, $idUser)
+{
+    $data_base= dataBaseConnexion();
+    $update= $data_base->prepare("UPDATE members SET password_='$password' WHERE id=?");
+    $update->execute([$idUser]);
+
+    return $update;
+}
+
+
+function updatePicture($picture, $idUser)
+{
+    $data_base= dataBaseConnexion();
+    $update= $data_base->prepare("UPDATE members SET picture='$picture' WHERE id=?");
+    $update->execute([$idUser]);
+
+    return $update;
+}
