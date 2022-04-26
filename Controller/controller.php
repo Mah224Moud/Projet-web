@@ -665,3 +665,10 @@ function applyModification()
 
     require('View/modifyProfile.php');
 }
+
+
+function otherProfile($userID)
+{
+    $member= allMembersByID($userID);
+    require('View/otherProfile.php');
+}
