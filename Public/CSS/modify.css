@@ -1,0 +1,110 @@
+h1, h3
+{
+    text-align: center;
+    font-family: "Brush Script MT", cursive;
+}
+
+
+h2
+{
+    font-family: "Brush Script MT", cursive;
+}
+
+img
+{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#test
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+
+
+#profile
+{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+    margin: 10px 0;
+}
+
+#me
+{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+    margin: 0 200px;
+}
+
+
+#me img
+{
+    margin: 10px 0;
+}
+
+
+.modify
+{
+    margin: 10px 200px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    -webkit-box-shadow: -7px 7px 15px 5px #000000; 
+    box-shadow: -7px 7px 15px 5px #000000;
+    border: 1px solid red;
+}
+
+#button
+{
+    position: relative;
+    height: 10px;
+    margin-bottom: 30px;
+}
+
+#button #save
+{
+    position: absolute;
+    border-radius: 10px;
+    right: 220px;
+    background-color: green;
+    color: whitesmoke;
+    font-size: medium;
+    height: 30px;
+}
+
+input[type=text], input[type=password]
+{
+    border-radius: 30px;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    font-size: large;
+}
+
+.errors
+{
+    background-color: red;
+    color: whitesmoke;
+    padding: 2px 0;
+    padding-left: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: -8px 10px 16px 5px #000000; 
+    box-shadow: -8px 10px 16px -1px #000000; 
+    text-align: center;
+    font-size: x-large;
+    margin: 10px 200px;
+}

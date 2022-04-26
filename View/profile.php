@@ -15,7 +15,7 @@
     <?php endif ?>
     <h1>Bienvenue sur ton profil</h1>
     <div id="button">
-        <a href=""><button id="modify">Modifier</button></a>
+        <a href="index.php?location=modify"><button id="modify">Modifier</button></a>
         <a href="index.php?location=logout"><button id="disconnect">Déconnexion</button></a>
     </div>
     <div id="profile">

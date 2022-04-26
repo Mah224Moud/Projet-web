@@ -585,3 +585,83 @@ function deletedCommentByAdmin($idComment, $idQuestion)
 
     require('View/adminComment.php');
 }
+
+
+
+function modify()
+{
+    require('View/modifyProfile.php');
+}
+
+
+function applyModification()
+{
+    if(isset($_SESSION['connected']))
+    {
+        $errors= [];
+
+        if ($_FILES['picture']['name']!="" && $_FILES['picture']['size']==0)
+        {
+            $errors['picture_size']= "Fichier volumineux. Recommendation <= 2Mb";
+        }
+        if($_FILES['picture']['name']!="")
+        {
+            $picture= $_FILES['picture']['name'];
+            $picExtension= new SplFileInfo($picture);
+            $getPicExtension= $picExtension->getExtension();
+
+            $possibleExtension= ['jpeg', 'jpg', 'png', 'JPG', 'JPEG', 'PNG'];
+
+            if(!in_array($getPicExtension, $possibleExtension))
+                $errors['picture_extension']= "Les fomats autorisés: 'jpeg' 'jpg' 'png'";
+        }
+
+
+        if(empty($errors))
+        {
+            if(isset($_POST['firstName']) && (!empty($_POST['firstName'])))
+            {
+                $firstName= $_POST['firstName'];
+                $update= updateFirstName($firstName, $_SESSION['id']);
+                $updated= "Modification effectuer avec succes";
+            }
+            if(isset($_POST['lastName']) && (!empty($_POST['lastName'])))
+            {
+                $lastName= $_POST['lastName'];
+                $update= updateLastName($lastName, $_SESSION['id']);
+                $updated= "Modification effectuer avec succes";
+            }
+            if(isset($_POST['password']) && (!empty($_POST['password'])))
+            {
+                $password= password_hash($_POST['password'],  PASSWORD_DEFAULT);
+                $update= updatePassword($password, $_SESSION['id']);
+                $updated= "Modification effectuer avec succes";
+            }
+
+            if(isset($_FILES) && $_FILES['picture']['name'] != "")
+            {
+                $picture= "./Public/Image/".$_FILES['picture']['name'];
+                $from= $_FILES['picture']['tmp_name'];
+
+                move_uploaded_file($from, $picture);
+
+                $update= updatePicture($picture, $_SESSION['id']);
+                $updated= "Modification effectuer avec succes";
+            }
+
+            $connectedEmail= $_SESSION['email'];
+            $session= sessionMember($connectedEmail);
+            //Creation session
+            $_SESSION['connected']= $session;
+            $_SESSION['picture']= $session['picture'];
+            $_SESSION['firstName']= $session['firstName'];
+            $_SESSION['lastName']= $session['lastName'];
+        }
+        
+
+
+        
+    }
+
+    require('View/modifyProfile.php');
+}
