@@ -24,7 +24,7 @@
             <span><strong><em><?=$_SESSION['username']?></em></strong></span>
         </div>
         <div id="about">
-            <h1>A propos de mois</h1>
+            <h1>A propos de moi</h1>
             <p><?=strtoupper($_SESSION['firstName'])?> <?=$_SESSION['lastName']?></p>
             <p>Né(e) le: <em><?=$_SESSION['birthday']?></em></p>
             <p>Email: <em><?=$_SESSION['email']?></em></p>

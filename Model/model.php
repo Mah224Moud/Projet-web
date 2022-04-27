@@ -216,7 +216,7 @@ function totalQuestions()
 function singleQuestion($idQuestion)
 {
     $data_base= dataBaseConnexion();
-    $question= $data_base->prepare('SELECT questions.id as id, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y à %H:%i\') AS date_ FROM members, questions WHERE questions.userID= members.id AND questions.id =?');
+    $question= $data_base->prepare('SELECT questions.id as id, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y à %H:%i\') AS date_, members.id AS userID FROM members, questions WHERE questions.userID= members.id AND questions.id =?');
     $question->execute([$idQuestion]);
 
     $questions= $question->fetch();
@@ -331,4 +331,17 @@ function updatePicture($picture, $idUser)
     $update->execute([$idUser]);
 
     return $update;
+}
+
+
+function allMembersByID($userID)
+{
+    $data_base= dataBaseConnexion();
+
+    $members= $data_base->prepare('SELECT id, firstName, lastName, DATE_FORMAT(birthday, \'%d %b %Y\') AS birthday_, email, username, picture, gender, DATE_FORMAT(inscription_date, \'%d %b %Y\') AS date_ FROM members WHERE id=?');
+    $members->execute([$userID]);
+
+    $member= $members->fetch();
+
+    return $member;
 }
