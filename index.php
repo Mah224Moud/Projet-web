@@ -152,6 +152,10 @@ if(isset($_GET['location']))
             applyModification();
             break;
 
+        case $_GET['location'] == 'otherProfile':
+            otherProfile($_GET['userID']);
+            break;
+
         default:
             homePage();
             break;

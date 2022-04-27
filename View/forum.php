@@ -56,7 +56,7 @@
                 <?php while($data= $questions->fetch()) : ?>
                     <div class="questions">
                         <div class="question">
-                            <img class="pic" src="<?=$data['picture']?>" alt="">
+                            <a href="index.php?location=otherProfile&userID=<?=$data['userID']?>"><img class="pic" src="<?=$data['picture']?>" alt=""></a>
                             <div class="content">
                                 <strong><em><?=$data['title']?></em></strong>
                                 <?=$data['content']?>
