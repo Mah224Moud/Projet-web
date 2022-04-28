@@ -152,6 +152,73 @@ if(isset($_GET['location']))
             applyModification();
             break;
 
+        case $_GET['location'] == 'cours':
+            cours();
+            break;
+
+        case $_GET['location'] == 'leCours':
+            lessons($_GET['idCours']);
+            break;
+
+        case $_GET['location'] == 'adminCourses':
+            if(isset($_SESSION['admin_username']))
+                adminCourses();
+            else
+                homePage();
+            break;
+
+        case $_GET['location'] == 'disableCours':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0)
+                    disableCours($_GET['idCours']);
+            }else
+                homePage();
+            break;
+
+        case $_GET['location'] == 'ableCours':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0)
+                    ableCours($_GET['idCours']);
+            }else
+                homePage();
+            break;
+
+        case $_GET['location'] == 'deleteCours':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0)
+                    deleteCours($_GET['idCours']);
+            }else
+                homePage();
+            break;
+        
+        case $_GET['location'] == 'addCours':
+            if(isset($_SESSION['admin_username'])){
+                addCours();
+            }else
+                homePage();
+            break;
+        
+        case $_GET['location'] == 'addingCours':
+            if(isset($_SESSION['admin_username'])){
+                addingCours();
+                }else
+                homePage();
+            break;
+
+        case $_GET['location'] == 'modifyCours':
+            if(isset($_SESSION['admin_username'])){
+                modifyCours($_GET['idCours']);
+            }else
+                homePage();
+            break;
+
+        case $_GET['location'] == 'modifyingCours':
+            if(isset($_SESSION['admin_username'])){
+                modifyingCours($_GET['idCours']);
+            }else
+                homePage();
+            break;
+
         default:
             homePage();
             break;

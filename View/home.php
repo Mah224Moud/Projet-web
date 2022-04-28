@@ -22,7 +22,7 @@
 
 
     <div id="mainPage">
-        <a href="">
+        <a href="index.php?location=cours">
             Cours
         </a>
         <a href="index.php?location=forum">

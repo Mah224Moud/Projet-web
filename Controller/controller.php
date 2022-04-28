@@ -8,7 +8,6 @@ global $session;
 
 function homePage()
 {
-
     require('View/home.php');
 }
 
@@ -23,7 +22,6 @@ function signUp()
 {
     require('View/signup.php');
 }
-
 
 
 function signUpCheck()
@@ -178,7 +176,6 @@ function signUpCheck()
 }
 
 
-
 function loginCheck()
 {
     $errors= [];
@@ -268,6 +265,7 @@ function adminHome()
 {   
     require('View/adminHome.php');
 }
+
 
 function members()
 {
@@ -412,12 +410,14 @@ function messageDelete($id)
     require('View/signal.php');
 }
 
+
 function forum()
 {
     $questions= allQuestions();
     $total= totalQuestions();
     require('View/forum.php');
 }
+
 
 function questions()
 {
@@ -490,12 +490,10 @@ function publishComment($idQuestion, $idUser)
 }
 
 
-
 function profile()
 {
     require('View/profile.php');
 }
-
 
 
 function deletedQuestion($idQuestion)
@@ -511,8 +509,6 @@ function deletedQuestion($idQuestion)
 
     require('View/forum.php');
 }
-
-
 
 
 function deletedComment($idComment, $idQuestion)
@@ -532,8 +528,6 @@ function deletedComment($idComment, $idQuestion)
 
     require('View/comment.php');
 }
-
-
 
 
 function adminForum()
@@ -585,7 +579,6 @@ function deletedCommentByAdmin($idComment, $idQuestion)
 
     require('View/adminComment.php');
 }
-
 
 
 function modify()
@@ -664,4 +657,95 @@ function applyModification()
     }
 
     require('View/modifyProfile.php');
+}
+
+
+function cours(){
+    $cours = allCours();
+    require('View/cours.php');
+}
+
+
+function adminCourses()
+{
+    $cours = allCours();
+    require('View/adminCourses.php');
+}
+
+
+function lessons($idcours){
+    $leCours = getCours($idcours);
+    $lessons = getLessons($idcours);
+    require('View/lessons.php');
+}
+
+function disableCours($idcours){
+    $isDisabled = disableCourse($idcours);
+    
+    if($isDisabled)
+        $confirm = "Cours désactivé";
+    else
+        $confirm = "Erreur !! cours non désactivé";
+
+    require('View/adminCourses.php');
+}
+
+function ableCours($idcours){
+    $isAbled = ableCourse($idcours);
+    
+    if($isAbled)
+        $confirm = "Cours activé";
+    else
+        $confirm = "Erreur !! cours non activé";
+
+    require('View/adminCourses.php');
+}
+
+function deleteCours($idcours){
+    $isDeleted = deleteCourse($idcours);
+
+    if($isDeleted)
+        $confirm = "Cours effacé";
+    else
+        $confirm = "Erreur !! cours non effacé";
+
+    require('View/adminCourses.php');
+}
+
+function addCours(){
+    require('View/addCours.php');
+}
+
+function addingCours(){
+    $title = htmlspecialchars($_POST['title']);
+    $descrip = htmlspecialchars($_POST['desc']);
+    $source = htmlspecialchars($_POST['source']);
+        
+    $isAdded = addCourse($title, $descrip, $source);
+        if($isAdded)
+            $confirm = "Cours ajouté";
+        else
+            $confirm = "Erreur !! Cours non ajouté";
+
+    require('View/adminCourses.php');
+}
+
+function modifyCours($idcours){
+    $cours = getCours($idcours);
+    $lecours = $cours->fetch();
+    require('View/modifyCourses.php');
+}
+
+function modifyingCours($idcours){
+    $title = htmlspecialchars($_POST['title']);
+    $descrip = htmlspecialchars($_POST['desc']);
+    $source = htmlspecialchars($_POST['source']);
+    
+    $isModified = modifyCourse($idcours, $title, $descrip, $source);
+        if($isModified)
+            $confirm = "Cours modifié";
+        else
+            $confirm = "Erreur !! Cours non modifié";
+
+    require('View/adminCourses.php');
 }

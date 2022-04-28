@@ -332,3 +332,84 @@ function updatePicture($picture, $idUser)
 
     return $update;
 }
+
+function allCours()
+{
+    $data_base = dataBaseConnexion();
+
+    $cours = $data_base->query('SELECT id, statut, titre, description, DATE_FORMAT(date_creation, \'%d %b %Y \') AS date_creation, DATE_FORMAT(date_modif, \'%d %b %Y \') AS date_modif, source FROM cours');
+    $cours->execute();
+    
+    return $cours;
+}
+
+function getCours($idcours)
+{
+    $data_base = dataBaseConnexion();
+
+    $lecours = $data_base->prepare('SELECT id, statut, titre, description, DATE_FORMAT(date_creation, \'%d %b %Y \') AS date_creation, DATE_FORMAT(date_modif, \'%d %b %Y \') AS date_modif, source FROM cours WHERE id = ?');
+    $lecours->execute([$idcours]);
+
+    return $lecours;
+}
+
+function getLessons($idcours)
+{
+    $data_base = dataBaseConnexion();
+
+    $lessons = $data_base->prepare('SELECT id, statut, titre, description, fichier FROM lessons WHERE idCours = ?');
+    $lessons->execute([$idcours]);
+
+    return $lessons;   
+}
+
+
+function disableCourse($id)
+{
+    $data_base = dataBaseConnexion();
+
+    $disable = $data_base->prepare("UPDATE cours SET statut='not active' WHERE id = ?");
+    $disable->execute([$id]);
+
+    return $disable;
+}
+
+function ableCourse($id)
+{
+    $data_base = dataBaseConnexion();
+
+    $able = $data_base->prepare("UPDATE cours SET statut='active' WHERE id = ?");
+    $able->execute([$id]);
+
+    return $able;
+}
+
+function deleteCourse($id)
+{
+    $data_base = dataBaseConnexion();
+
+    $delete = $data_base->prepare("DELETE FROM cours WHERE id = ?");
+    $delete->execute([$id]);
+
+    return $delete;
+}
+
+function addCourse($titre, $descr, $source)
+{
+    $data_base = dataBaseConnexion();
+
+    $adding = $data_base->prepare("INSERT INTO cours(statut, titre, description, source) VALUES ('not active', ?, ?, ?)");
+    $adding->execute([$titre, $descr, $source]);
+    
+    return $adding;
+}
+
+function modifyCourse($idcours, $titre, $descr, $source)
+{
+    $data_base = dataBaseConnexion();
+    
+    $modifying = $data_base->prepare('UPDATE cours SET titre = ?, description = ?, source = ?, date_modif = CURRENT_DATE where id = ?');
+    $modifying->execute([$titre, $descr, $source, $idcours]);
+
+    return $modifying;
+}

@@ -19,6 +19,7 @@
     <a href="index.php?location=allMembers">Membres</a>
     <a href="index.php?location=signal">Signal</a>
     <a href="index.php?location=adminForum">Forum</a>
+    <a href="index.php?location=adminCourses">Cours</a>
     
 </body>
 </html>
