@@ -412,7 +412,7 @@ function modifyCourse($idcours, $titre, $descr, $source)
     $modifying = $data_base->prepare('UPDATE cours SET titre = ?, description = ?, source = ?, date_modif = CURRENT_DATE where id = ?');
     $modifying->execute([$titre, $descr, $source, $idcours]);
 
-    return $modifying
+    return $modifying;
  }
 
 function allMembersByID($userID)
