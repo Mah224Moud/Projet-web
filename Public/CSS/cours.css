@@ -1,0 +1,55 @@
+h1{
+    text-align: center;
+}
+
+.cours{
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 10px 25px;
+    margin-bottom: 25px;
+    background-color: gray;
+}
+
+.cours{
+    text-align: center;
+}
+
+.cours a{
+    text-decoration: none;
+}
+
+.description{
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.info{
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+}
+
+.buttons{
+    margin: 20px;
+}
+
+.buttons a{
+    padding: 7.5px;
+    margin: 10px 10px;
+    border: 2px solid black;
+    border-radius: 5px;  
+    background-color: aquamarine;
+}
+
+.buttons a:hover{
+    background-color: royalblue;
+}
+
+#addCours{
+    padding: 20px;
+    border: 2px black solid;
+    border-radius: 5px;
+    background-color: darkcyan;
+}

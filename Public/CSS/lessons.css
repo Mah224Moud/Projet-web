@@ -1,0 +1,13 @@
+.lesson{
+    background-color: gray;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 25px;
+    margin: 1% 25%;
+}
+
+.lesson p{
+    background-color: whitesmoke;
+    margin: 0 5%;
+    border-radius: 5px;
+}
