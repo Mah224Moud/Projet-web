@@ -216,7 +216,7 @@ function totalQuestions()
 function singleQuestion($idQuestion)
 {
     $data_base= dataBaseConnexion();
-    $question= $data_base->prepare('SELECT questions.id as id, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y à %H:%i\') AS date_ FROM members, questions WHERE questions.userID= members.id AND questions.id =?');
+    $question= $data_base->prepare('SELECT questions.id as id, username, content, title, picture, DATE_FORMAT(question_date, \'%d %b %Y à %H:%i\') AS date_, members.id AS userID FROM members, questions WHERE questions.userID= members.id AND questions.id =?');
     $question->execute([$idQuestion]);
 
     $questions= $question->fetch();
@@ -333,6 +333,7 @@ function updatePicture($picture, $idUser)
     return $update;
 }
 
+
 function allCours()
 {
     $data_base = dataBaseConnexion();
@@ -411,5 +412,17 @@ function modifyCourse($idcours, $titre, $descr, $source)
     $modifying = $data_base->prepare('UPDATE cours SET titre = ?, description = ?, source = ?, date_modif = CURRENT_DATE where id = ?');
     $modifying->execute([$titre, $descr, $source, $idcours]);
 
-    return $modifying;
+    return $modifying
+ }
+
+function allMembersByID($userID)
+{
+    $data_base= dataBaseConnexion();
+
+    $members= $data_base->prepare('SELECT id, firstName, lastName, DATE_FORMAT(birthday, \'%d %b %Y\') AS birthday_, email, username, picture, gender, DATE_FORMAT(inscription_date, \'%d %b %Y\') AS date_ FROM members WHERE id=?');
+    $members->execute([$userID]);
+
+    $member= $members->fetch();
+
+    return $member;
 }

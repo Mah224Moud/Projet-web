@@ -659,7 +659,6 @@ function applyModification()
     require('View/modifyProfile.php');
 }
 
-
 function cours(){
     $cours = allCours();
     require('View/cours.php');
@@ -748,4 +747,10 @@ function modifyingCours($idcours){
             $confirm = "Erreur !! Cours non modifié";
 
     require('View/adminCourses.php');
+}
+
+function otherProfile($userID)
+{
+    $member= allMembersByID($userID);
+    require('View/otherProfile.php');
 }

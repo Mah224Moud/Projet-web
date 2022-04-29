@@ -217,6 +217,9 @@ if(isset($_GET['location']))
                 modifyingCours($_GET['idCours']);
             }else
                 homePage();
+        
+        case $_GET['location'] == 'otherProfile':
+            otherProfile($_GET['userID']);
             break;
 
         default:

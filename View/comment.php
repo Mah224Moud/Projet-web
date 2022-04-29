@@ -23,7 +23,7 @@
     <?php if(isset($question)): ?>
         <div class="questions">
             <div class="question">
-                <img class="pic" src="<?=$question['picture']?>" alt="">
+                <a href="index.php?location=otherProfile&userID=<?=$question['userID']?>"><img class="pic" src="<?=$question['picture']?>" alt=""></a>
                 <div class="content">
                     <strong><em><?=$question['title']?></em></strong>
                     <?=$question['content']?>
@@ -59,7 +59,7 @@
                     <?php $member=  identifiedMember($comments['userID']);?>
                     <div class="questions">
                         <div class="question">
-                            <img class="pic" src="<?=$member['picture']?>" alt="">
+                            <a href="index.php?location=otherProfile&userID=<?=$comments['userID']?>"><img class="pic" src="<?=$member['picture']?>" alt=""></a>
                             <div class="content-comment">
                                 <?=$comments['comment']?>
                             </div>
