@@ -217,7 +217,70 @@ if(isset($_GET['location']))
                 modifyingCours($_GET['idCours']);
             }else
                 homePage();
+
+        case $_GET['location'] == 'adminLeCours':
+            if(isset($_SESSION['admin_username'])){
+                adminLessons($_GET['idCours']);
+            }else
+                homePage();
+            break;
+        //====================================
+        case $_GET['location'] == 'disableLesson':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0 && isset($_GET['idLesson']) && $_GET['idLesson']>0)
+                    disableLesson($_GET['idCours'], $_GET['idLesson']);
+            }else
+                homePage();
+            break;
+
+        case $_GET['location'] == 'ableLesson':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0 && isset($_GET['idLesson']) && $_GET['idLesson']>0)
+                    ableLesson($_GET['idCours'], $_GET['idLesson']);
+            }else
+                homePage();
+            break;
         
+        case $_GET['location'] == 'removeLesson':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0 && isset($_GET['idLesson']) && $_GET['idLesson']>0)
+                    removeLesson($_GET['idCours'], $_GET['idLesson']);
+            }else
+                homePage();
+            break;
+        
+        case $_GET['location'] == 'addLesson':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0)
+                    addLesson($_GET['idCours']);
+            }else
+                homePage();
+            break;
+        
+        case $_GET['location'] == 'addingLesson':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0)
+                    addingLesson($_GET['idCours']);
+            }else
+                homePage();
+            break;
+
+        case $_GET['location'] == 'modifyLesson':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0 && isset($_GET['idLesson']) && $_GET['idLesson']>0)
+                    modifyLesson($_GET['idCours'],$_GET['idLesson']);
+            }else
+                homePage();
+            break;
+
+        case $_GET['location'] == 'modifyingLesson':
+            if(isset($_SESSION['admin_username'])){
+                if(isset($_GET['idCours']) && $_GET['idCours']>0 && isset($_GET['idLesson']) && $_GET['idLesson']>0)
+                    modifyingLesson($_GET['idCours'],$_GET['idLesson']);
+            }else
+                homePage();
+            break;
+        //====================================
         case $_GET['location'] == 'otherProfile':
             otherProfile($_GET['userID']);
             break;

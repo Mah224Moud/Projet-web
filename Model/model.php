@@ -25,7 +25,6 @@ function inscriptionMember($gender, $fisrtName, $lastName, $birthday, $pic, $ema
 }
 
 
-
 function emailCheck($email)
 {
     $data_base= dataBaseConnexion();
@@ -50,7 +49,6 @@ function usernameCheck($username)
 }
 
 
-
 function logCheck($email, $password)
 {
     $data_base= dataBaseConnexion();
@@ -72,6 +70,7 @@ function loginMember($email, $password)
 
     return $information;
 }
+
 
 function sessionMember($email)
 {
@@ -151,7 +150,6 @@ function deleteMessage($id)
 }
 
 
-
 function totalMessage()
 {
     $data_base= dataBaseConnexion();
@@ -163,7 +161,6 @@ function totalMessage()
 
     return $total;
 }
-
 
 
 function totalMembers()
@@ -246,8 +243,6 @@ function allComments($idQuestion)
 }
 
 
-
-
 function identifiedMember($idUser)
 {
     $data_base= dataBaseConnexion();
@@ -271,7 +266,6 @@ function numberCommentsforEachQuestion($idQuestion)
 }
 
 
-
 function deleteQuestion($idQuestion)
 {
     $data_base= dataBaseConnexion();
@@ -290,8 +284,6 @@ function deleteComment($idComment)
 
     return $comment;
 }
-
-
 
 
 function updateFirstName($fisrtName, $idUser)
@@ -344,6 +336,7 @@ function allCours()
     return $cours;
 }
 
+
 function getCours($idcours)
 {
     $data_base = dataBaseConnexion();
@@ -354,6 +347,7 @@ function getCours($idcours)
     return $lecours;
 }
 
+
 function getLessons($idcours)
 {
     $data_base = dataBaseConnexion();
@@ -362,6 +356,16 @@ function getLessons($idcours)
     $lessons->execute([$idcours]);
 
     return $lessons;   
+}
+
+function getLesson($idlesson)
+{
+    $data_base = dataBaseConnexion();
+
+    $lesson = $data_base->prepare('SELECT id, statut, titre, description, fichier FROM lessons WHERE id = ?');
+    $lesson->execute([$idlesson]);
+
+    return $lesson;   
 }
 
 
@@ -375,6 +379,7 @@ function disableCourse($id)
     return $disable;
 }
 
+
 function ableCourse($id)
 {
     $data_base = dataBaseConnexion();
@@ -384,6 +389,7 @@ function ableCourse($id)
 
     return $able;
 }
+
 
 function deleteCourse($id)
 {
@@ -395,6 +401,7 @@ function deleteCourse($id)
     return $delete;
 }
 
+
 function addCourse($titre, $descr, $source)
 {
     $data_base = dataBaseConnexion();
@@ -405,6 +412,7 @@ function addCourse($titre, $descr, $source)
     return $adding;
 }
 
+
 function modifyCourse($idcours, $titre, $descr, $source)
 {
     $data_base = dataBaseConnexion();
@@ -413,7 +421,8 @@ function modifyCourse($idcours, $titre, $descr, $source)
     $modifying->execute([$titre, $descr, $source, $idcours]);
 
     return $modifying;
- }
+}
+
 
 function allMembersByID($userID)
 {
@@ -425,4 +434,66 @@ function allMembersByID($userID)
     $member= $members->fetch();
 
     return $member;
+}
+
+
+function disableTheLesson($id)
+{
+    $data_base = dataBaseConnexion();
+
+    $disable = $data_base->prepare("UPDATE lessons SET statut='not active' WHERE id = ?");
+    $disable->execute([$id]);
+
+    return $disable;
+}
+
+
+function ableTheLesson($id)
+{
+    $data_base = dataBaseConnexion();
+
+    $able = $data_base->prepare("UPDATE lessons SET statut='active' WHERE id = ?");
+    $able->execute([$id]);
+
+    return $able;
+}
+
+
+function removeTheLesson($id)
+{
+    $data_base = dataBaseConnexion();
+
+    $able = $data_base->prepare("DELETE FROM lessons WHERE id = ?");
+    $able->execute([$id]);
+
+    return $able;
+}
+
+
+function addingTheLesson($title, $descr, $fichier, $idcours)
+{
+    $data_base = dataBaseConnexion();
+
+    $adding = $data_base->prepare("INSERT INTO lessons(statut, titre, description, fichier,  idCours) VALUES ('not active', ?, ?, ?, ?)");
+    $adding->execute([$title, $descr, $fichier, $idcours]);
+    
+    return $adding;
+}
+
+
+function modifyTheLesson($idLesson, $titre, $descr, $fichier)
+{
+    $data_base = dataBaseConnexion();
+    if($fichier != '')
+    {
+        $modifying = $data_base->prepare('UPDATE lessons SET titre = ?, description = ?, fichier = ? where id = ?');
+        $modifying->execute([$titre, $descr, $fichier, $idLesson]);
+    }
+    else
+    {
+        $modifying = $data_base->prepare('UPDATE lessons SET titre = ?, description = ? where id = ?');
+        $modifying->execute([$titre, $descr, $idLesson]);
+    }
+        
+    return $modifying;
 }

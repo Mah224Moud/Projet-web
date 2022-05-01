@@ -41,7 +41,7 @@
                             </div>
                         </div>
 
-                        <a href="index.php?location=leCours&idCours=<?=$lecours['id']?>">Acceder au cours</a>
+                        <a href="index.php?location=adminLeCours&idCours=<?=$lecours['id']?>">Acceder au cours</a>
             
                     </div>
                 <?php endwhile; ?>
