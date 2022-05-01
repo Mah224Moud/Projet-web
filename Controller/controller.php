@@ -401,7 +401,6 @@ function memberDelete($id)
 }
 
 
-
 function messageDelete($id)
 {
     $signalStatus= deleteMessage($id);
@@ -753,4 +752,98 @@ function otherProfile($userID)
 {
     $member= allMembersByID($userID);
     require('View/otherProfile.php');
+}
+
+function adminLessons($idcours){
+    $leCours = getCours($idcours);
+    $lessons = getLessons($idcours);
+    require('View/adminLessons.php');
+}
+
+function disableLesson($idCours, $idLesson){
+    $isDisabled = disableTheLesson($idLesson);
+    
+    if($isDisabled)
+        $confirm = "Leçon désactivée";
+    else
+        $confirm = "Erreur !! leçon non désactivée";
+
+    adminLessons($idCours);
+}
+
+function ableLesson($idCours, $idLesson){
+    $isAbled = ableTheLesson($idLesson);
+    
+    if($isAbled)
+        $confirm = "Leçon désactivée";
+    else
+        $confirm = "Erreur !! leçon non désactivée";
+
+    adminLessons($idCours);
+}
+
+function removeLesson($idCours, $idLesson){
+    $isRemoved = removeTheLesson($idLesson);
+    
+    if($isRemoved)
+        $confirm = "Leçon désactivée";
+    else
+        $confirm = "Erreur !! leçon non désactivée";
+
+    adminLessons($idCours);
+}
+
+function addLesson($idCours){
+    require('View/addLesson.php');
+}
+
+function addingLesson($idcours){
+
+    $title = htmlspecialchars($_POST['title']);
+    $descrip = htmlspecialchars($_POST['desc']);
+
+    if($_FILES['fichier']['name'] != ""){
+        $from = $_FILES['fichier']['tmp_name'];
+        $destination = "./Public/Files/".$_FILES['fichier']['name'];
+        move_uploaded_file($from, $destination);
+        $fichier = $destination;
+    }
+    else
+        $fichier = "";
+
+    $isAdded  = addingTheLesson($title, $descrip, $fichier, $idcours);
+        if($isAdded)
+            $confirm = "Leçon ajoutée";
+        else
+            $confirm = "Erreur !! Leçon non ajoutée";
+        
+    adminLessons($idcours);
+}
+
+function modifyLesson($idCours, $idLesson){
+    $lesson = getLesson($idLesson);
+    $lalesson = $lesson->fetch();
+    require('View/modifyLessons.php');
+}
+
+function modifyingLesson($idCours, $idLesson){
+    $title = htmlspecialchars($_POST['title']);
+    $descrip = htmlspecialchars($_POST['desc']);
+    
+    if($_FILES['fichier']['name'] != ""){
+        $from = $_FILES['fichier']['tmp_name'];
+        $destination = "./Public/Files/".$_FILES['fichier']['name'];
+        move_uploaded_file($from, $destination);
+        $fichier = $destination;
+    }
+    else
+        $fichier = "";
+
+    $isModified = modifyTheLesson($idLesson, $title, $descrip, $fichier);
+        if($isModified)
+            $confirm = "Cours modifié";
+        else
+            $confirm = "Erreur !! Cours non modifié";
+
+    adminLessons($idCours);
 }

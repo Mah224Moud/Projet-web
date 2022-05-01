@@ -20,7 +20,7 @@
     <form action="index.php?location=modifyingCours&idCours=<?php if(isset($idcours)) echo $idcours; ?>" method="post">
         <fieldset>
             <legend>Ajouter un nouveau cours</legend>
-            <label for="">Titre : </label> 
+            <label for="">Titre : </label> <br>
             <input type="text" name="title" placeholder="Saisir ici le titre du cours" value="<?php if(isset($lecours['titre'])) echo $lecours['titre']; ?>" required="required">
             <br>
             <label for="">Description : </label> <br>
@@ -29,7 +29,7 @@
                     echo $lecours['description']; ?>
             </textarea>
             <br>
-            <label for="">Source : </label>
+            <label for="">Source : </label> <br>
             <input type="text" name="source" value="<?php if(isset($lecours['source'])) echo $lecours['source']; ?>" placeholder="Indiquer ici une source">
             <br>
             <input type="reset" value="Annuler">

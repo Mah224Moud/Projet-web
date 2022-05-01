@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Public/CSS/menu.css?ts=<?=time()?>">
     <link rel="stylesheet" href="Public/CSS/cours.css?ts=<?=time()?>">
-    <title>Cours</title>
+    <title>Ajouter un cours</title>
 </head>
 <body>
     <?php require('header.php'); ?>
@@ -20,13 +20,13 @@
     <form action="index.php?location=addingCours" method="post">
         <fieldset>
             <legend>Ajouter un nouveau cours</legend>
-            <label for="">Titre : </label> 
+            <label for="">Titre : </label>  <br>
             <input type="text" name="title" placeholder="Saisir ici le titre du cours" required="required">
             <br>
             <label for="">Description : </label> <br>
             <textarea name="desc" id="" placeholder="Saisir ici une description du cours"></textarea>
             <br>
-            <label for="">Source : </label>
+            <label for="">Source : </label> <br>
             <input type="text" name="source" placeholder="Indiquer ici une source">
             <br>
             <input type="reset" value="Annuler">

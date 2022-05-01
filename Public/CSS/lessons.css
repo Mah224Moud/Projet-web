@@ -11,3 +11,25 @@
     margin: 0 5%;
     border-radius: 5px;
 }
+
+fieldset{
+    text-align: center;
+    border: 2px solid black;
+}
+
+legend{
+    display: block;
+    margin: auto;
+}
+
+input{
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+textarea{
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 20%;
+    height: 20%;
+}
