@@ -847,3 +847,89 @@ function modifyingLesson($idCours, $idLesson){
 
     adminLessons($idCours);
 }
+
+
+function quiz()
+{
+    $fichierXml= simplexml_load_file("./Public/Others/fichier.xml");
+    $i= 0;
+    require('View/quiz.php');
+}
+
+
+function quizCheck()
+{
+    $errors= [];
+    if(empty($_POST["reponse1"]) || empty($_POST["reponse2"]) || empty($_POST["reponse3"]) || empty($_POST["reponse4"]) || empty($_POST["reponse5"]) || empty($_POST["reponse6"]) || empty($_POST["reponse7"]) || empty($_POST["reponse8"]) || empty($_POST["reponse9"]) || empty($_POST["reponse10"]))
+    {
+        $errors['emptyCase']= "Toutes les cases doivent être remplies";
+    }
+    else
+    {
+        $done= "tout est bon";
+        $result= 0;
+        if($_POST['reponse1'] == "vrai")
+        {
+            $result+= 10;
+        }
+        if($_POST['reponse2'] == "vrai")
+        {
+            $result+= 10;
+        }
+        if($_POST['reponse3'] == "vrai")
+        {
+            $result+= 10;
+        }
+        if($_POST['reponse4'] == "vrai")
+        {
+            $result+= 10;
+        }
+        if($_POST['reponse5'] == "vrai")
+        {
+            $result+= 10;
+        }
+        if($_POST['reponse6'] == "vrai")
+        {
+            $result+= 10;
+        }
+        if($_POST['reponse7'] == "vrai")
+        {
+            $result+= 10;
+        }
+        if($_POST['reponse8'] == "vrai")
+        {
+            $result+= 10;
+        }
+        if($_POST['reponse9'] == "vrai")
+        {
+            $result+= 10;
+        }
+        if($_POST['reponse10'] == "vrai")
+        {
+            $result+= 10;
+        }
+
+        $updateQuiz= updateQuiz($_SESSION['id'], $result);
+        $_SESSION['quiz_status']= "answered";
+    }
+    
+    $fichierXml= simplexml_load_file("./Public/Others/fichier.xml");
+    $i= 0;
+    require('View/quiz.php');
+}
+
+
+
+function quizResult()
+{
+    $fichierXml= simplexml_load_file("./Public/Others/fichier.xml");
+    $i= 0;
+    require('View/quizResult.php');
+}
+
+
+
+function aboutUs()
+{
+    require('View/aboutUs.php');
+}

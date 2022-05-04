@@ -25,24 +25,28 @@
     
     <?php if(isset($_SESSION['connected'])) :?>
         <h2 class="info-form">Créer une question</h2>
-        <form action="index.php?location=questions" method="post">
-            <fieldset>
-                <label for="">Titre: </label><input type="text" name="title" id="" placeholder="Titre"><br>
-                <?php if(isset($errors['title'])) :?>
-                    <p class="errors"><?=$errors['title']?></p>
-                <?php endif ?>
+        <div class="form">
+            <form action="index.php?location=questions" method="post">
+                <fieldset>
+                    <label for="">Titre: </label><input type="text" name="title" id="" placeholder="Titre"><br>
+                    <?php if(isset($errors['title'])) :?>
+                        <p class="errors"><?=$errors['title']?></p>
+                    <?php endif ?>
 
 
-                <textarea name="content" id="" cols="30" rows="10" placeholder="Ecrire le contenu de votre question ici !!!"></textarea><br>
-                <?php if(isset($errors['content'])) :?>
-                    <p class="errors"><?=$errors['content']?></p>
-                <?php endif ?>
+                    <textarea name="content" id="" cols="30" rows="10" placeholder="Ecrire le contenu de votre question ici !!!"></textarea><br>
+                    <?php if(isset($errors['content'])) :?>
+                        <p class="errors"><?=$errors['content']?></p>
+                    <?php endif ?>
 
 
-                <input type="reset" value="Annuler"><input type="submit" value="Publier"><br><br>
-                Tous les champs sont obligatoires
-            </fieldset>
-        </form>
+                    <div class="submit">
+                        <input type="reset" value="Annuler"><input type="submit" value="Publier"><br>
+                    </div>
+                    Tous les champs sont obligatoires
+                </fieldset>
+            </form>
+        </div>
     <?php else: ?>
         <h2><a href="index.php?location=login">Créer une question</a></h2>
     <?php endif?>

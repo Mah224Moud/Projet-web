@@ -23,18 +23,22 @@
 
     <div id="mainPage">
         <a href="index.php?location=cours">
-            Cours
+            <img src="./Public/Image/cours.jpg" alt="">
+            <div id="cours">Cours</div>
         </a>
         <a href="index.php?location=forum">
-            Forum
+            <img src="./Public/Image/chat.png" alt="">
+            <div id="forum">Forum</div>
         </a>
         <?php if(isset($_SESSION['connected'])) :?>
             <a href="index.php?location=logout">
-                Déconnexion
+                <img src="./Public/Image/logout.png" alt="">
+                <div id="logout">Déconnexion</div>
             </a>
         <?php else: ?>
             <a href="index.php?location=login">
-                Connexion
+                <img src="./Public/Image/login.jpg" alt="">
+                <div id="login">Connexion</div>
             </a>
         <?php endif ?>
     </div>
@@ -44,7 +48,7 @@
 
     <footer>
         <a href="index.php?location=contactUs">Nous contacter</a>
-        <a href="">Qui sommes-nous ?</a>
+        <a href="index.php?location=aboutUs">Qui sommes-nous ?</a>
     </footer>
 
     <?php if(isset($logout)) :?>

@@ -19,29 +19,32 @@
 
     <h2><a href="index.php?location=home">Accueil</a> > Connexion</h2>
 
-    <form action="index.php?location=loginCheck" method="post">
-        <?php if(isset($errors['not_existed_mail'])) :?>
-            <p class="errors"><?=$errors['not_existed_mail']?> voulez vous <a href="index.php?location=signUp">créez un compte ?</a></p>
-        <?php endif ?>
-
-        <fieldset>
-            <legend>Connexion</legend>
-            <!--Email-->
-            <label for="">*Email: </label><input type="email" name="email" id="" placeholder="monmail@example.com" value="<?= $_POST['email'] ?? '' ?>"><br>
-            <?php if(isset($errors['email'])) :?>
-                <p class="errors"><?=$errors['email']?></p>
+    <div class="form">
+        <form action="index.php?location=loginCheck" method="post">
+            <?php if(isset($errors['not_existed_mail'])) :?>
+                <p class="errors"><?=$errors['not_existed_mail']?> voulez vous <a href="index.php?location=signUp">créez un compte ?</a></p>
             <?php endif ?>
 
-            <!--Mot de passe-->
-            <label for="">*Mot de passe: </label><input type="password" name="password" id="" placeholder="Mot de passe"><br>
-            <?php if(isset($errors['password'])) :?>
-                <p class="errors"><?=$errors['password']?></p>
-            <?php endif ?>
+            <fieldset>
+                <legend>Connexion</legend>
+                <!--Email-->
+                <label for="">*Email: </label><input type="email" name="email" id="" placeholder="monmail@example.com" value="<?= $_POST['email'] ?? '' ?>"><br>
+                <?php if(isset($errors['email'])) :?>
+                    <p class="errors"><?=$errors['email']?></p>
+                <?php endif ?>
 
+                <!--Mot de passe-->
+                <label for="">*Mot de passe: </label><input type="password" name="password" id="" placeholder="Mot de passe"><br>
+                <?php if(isset($errors['password'])) :?>
+                    <p class="errors"><?=$errors['password']?></p>
+                <?php endif ?>
 
-            <input type="reset" value="Annuler"><input type="submit" value="Connexion"><br><br>
-            Tous les champs marqués d'une * sont obligatoires <br>
-            Vous n'avez pas de compte? <a href="index.php?location=signUp">Inscrivez-vous</a>
-        </fieldset>
-    </form>
+                <div class="submit">
+                    <input type="reset" value="Annuler"><input type="submit" value="Connexion">
+                </div> <br>
+                Tous les champs marqués d'une * sont obligatoires <br>
+                Vous n'avez pas de compte? <a href="index.php?location=signUp">Inscrivez-vous</a>
+            </fieldset>
+        </form>
+    </div>
 </html>

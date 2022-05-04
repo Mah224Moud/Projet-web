@@ -1,3 +1,9 @@
+body
+{
+    background: url("../Image/fond5.png");
+}
+
+
 h1, .total
 {
     text-align: center;

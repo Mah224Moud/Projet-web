@@ -4,10 +4,10 @@
             <a href="index.php?location=adminHome">Accueil</a>
         </li>
         <li>
-            <a href="">Cours</a>
+            <a href="index.php?location=adminCourses">Cours</a>
         </li>
         <li>
-            <a href="">Forum</a>
+            <a href="index.php?location=adminForum">Forum</a>
         </li>
         <li>
             <a href="index.php?location=logout">Déconnexion</a>
