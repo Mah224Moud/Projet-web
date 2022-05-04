@@ -44,7 +44,7 @@
                     <p class="errors"><?=$errors['content']?></p>
                 <?php endif ?>
 
-                <input type="reset" value="Annuler"><input type="submit" value="Publier"><br><br>
+                <input type="reset" value="Annuler"><input type="submit" value="Publier"><br>
         </form>
     <?php else: ?>
         <h2 class="info-form"><a href="index.php?location=login">Ecrire un commentaire</a></h2>

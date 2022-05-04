@@ -1,4 +1,9 @@
-h1
+body
+{
+    background: url("../Image/fond5.png");
+}
+
+h1, #logout, #cours, #forum, #login, #members, #signal
 {
     text-align: center;
     font-family: "Brush Script MT", cursive;
@@ -8,4 +13,62 @@ h1
 h2
 {
     font-family: "Brush Script MT", cursive;
+}
+
+#mainPage a img
+{
+    width: 400px;
+    height: 400px;
+    border-radius: 25px;
+    margin: 5px;
+    transition: all ease-in-out 1s;
+}
+
+#mainPage a img:hover
+{
+    width: 500px;
+    height: 500px;
+    transition: all ease-in-out 1s;
+    
+}
+
+
+#mainPage
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+}
+#logout, #cours, #forum, #login, #members, #signal
+{
+    text-align: center;
+    font-size: 45px;
+    display: none;
+    color: brown;
+    font-weight: bold;
+}
+#mainPage a:hover #logout, #mainPage a:hover #cours, #mainPage a:hover #forum, #mainPage a:hover #login, #mainPage a:hover #members, #mainPage a:hover #signal 
+{
+    display: block;
+    transition: all ease-in-out 1s;
+}
+
+footer
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: stretch;
+    margin-top: 100px;
+}
+
+footer a 
+{
+    font-size: 25px;
+    margin: 0 10px;
 }

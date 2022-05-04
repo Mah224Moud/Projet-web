@@ -1,3 +1,8 @@
+body
+{
+    background: url("../Image/fond5.png");
+}
+
 h1, .total
 {
     text-align: center;
@@ -83,6 +88,7 @@ strong
 .info-form
 {
     margin-bottom: 0;
+    text-align: center;
 }
 
 .delete
@@ -100,4 +106,14 @@ strong
     margin-top: 5px;
     color: whitesmoke;
     background-color: red;
+}
+
+.form
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
 }

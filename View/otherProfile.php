@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php if(isset($member)): ?>
-        <h2><a href="index.php">Accueil</a> > <?=$member['username']?></h2>
+        <h2><a href="index.php">Accueil</a> > <a href="index.php?location=forum">Forum</a> ><?=$member['username']?></h2>
         <h1>Profile de <?=$member['username']?></h1>
         <div id="profile">
             <div id="me">

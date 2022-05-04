@@ -497,3 +497,15 @@ function modifyTheLesson($idLesson, $titre, $descr, $fichier)
         
     return $modifying;
 }
+
+
+
+function updateQuiz($userID, $result)
+{
+    $data_base = dataBaseConnexion();
+
+    $insert= $data_base->prepare("INSERT INTO quiz (level_, userID) VALUES(?, ?)");
+    $insert->execute([$result, $userID]);
+
+    return $insert;
+}

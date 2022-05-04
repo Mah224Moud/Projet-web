@@ -17,9 +17,10 @@
     <?php else :?>
         <h2><em>Vous n'êtes pas connecté</em></h2>
     <?php endif ?>
-
+    
     <?php if(isset($leCours)): ?>
         <?php while($lecours = $leCours->fetch()) : ?>
+            <h2><a href="index.php">Accueil </a>> <a href="index.php?location=cours">Cours</a> > <?=$lecours['titre']?></h2>
             <div class="cours">
                 <h2><?=$lecours['titre']?></h2>
                 <p class="description"><?=$lecours['description']?></p>

@@ -1,6 +1,21 @@
-h2
+body
+{
+    background: url("../Image/fond5.png");
+}
+
+h2, legend
 {
     font-family: "Brush Script MT", cursive;
+}
+legend
+{
+    text-align: center;
+    margin: 0 25%;
+    font-size: 20px;
+}
+fieldset
+{
+    border-radius: 25px;
 }
 
 strong
@@ -13,4 +28,25 @@ textarea
     resize: none;
     border-radius: 15px;
     padding: 0 15px;
+    width: 90%;
+}
+
+.form
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+
+.submitAndReset
+{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
 }

@@ -10,7 +10,7 @@
     <title>Cours</title>
 </head>
 <body>
-    <?php require('header.php'); ?>
+    <?php require('headerAdmin.php'); ?>
 
     <?php if(isset($_SESSION['connected'])) :?>
         <h2><em>Bonjour <?=$_SESSION['username']?></em></h2>

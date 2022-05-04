@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qcm>
+     <question>1: Qu’est-ce qu’un algorithme?
+          <reponse1 check="faux">
+               A Un organigramme
+          </reponse1>
+          <reponse2 check="vrai">
+               Instructions pas à pas utilisées pour résoudre un problème
+          </reponse2>
+          <reponse3 check="faux">
+               Une décision
+          </reponse3>
+     </question>
+     <question>2: Tout algorithme est un programme.
+          <reponse1 check="faux">
+               Vrai
+          </reponse1>
+          <reponse2 check="vrai">
+               Faux
+          </reponse2>
+          <reponse3 check="faux">
+               Toutes les réponses sont vraies
+          </reponse3>
+     </question>
+     <question>3: Lorsque vous écrivez un algorithme, l’ordre des instructions est très important.
+          <reponse1 check="vrai">
+               Vrai
+          </reponse1>
+          <reponse2 check="faux">
+               Faux
+          </reponse2>
+          <reponse3 check="faux">
+               Toutes les réponses sont fausses
+          </reponse3>
+     </question>
+     <question>4: Les langages de programmation donnent des instructions à l’ordinateur?
+          <reponse1 check="vrai">
+               Vrai
+          </reponse1>
+          <reponse2 check="faux">
+               Faux
+          </reponse2>
+          <reponse3 check="faux">
+               Toutes les réponses sont fausses
+          </reponse3>
+     </question>
+     <question>5: Que faut-il considérer lors de la conception d’un algorithme?
+          <reponse1 check="faux">
+               Si le matériel est correctement utilisé
+          </reponse1>
+          <reponse2 check="vrai">
+               S’il y a plus d’une façon de résoudre le problème
+          </reponse2>
+          <reponse3 check="faux">
+               Tout les réponses sont vrais
+          </reponse3>
+     </question>
+     <question>6: Quand peut-on utiliser des algorithmes?
+          <reponse1 check="faux">
+               Seulement avec des ordinateurs
+          </reponse1>
+          <reponse2 check="faux">
+               Seulement lors de la programmation
+          </reponse2>
+          <reponse3 check="vrai">
+               À tout moment pour concevoir des solutions aux problèmes
+          </reponse3>
+     </question>
+     <question>7: Pour répéter une tâche, nous utilisons une ____?
+          <reponse1 check="faux">
+               Entrée
+          </reponse1>
+          <reponse2 check="faux">
+               Condition
+          </reponse2>
+          <reponse3 check="vrai">
+               Boucle
+          </reponse3>
+     </question>
+     <question>8: Si ... Alors ... Sinon ....Fin Si.  vérifie ____?
+          <reponse1 check="vrai">
+               Deux conditions
+          </reponse1>
+          <reponse2 check="faux">
+               Trois conditions
+          </reponse2>
+          <reponse3 check="faux">
+               Plusieurs conditions
+          </reponse3>
+     </question>
+     <question>9: MySQL est un système de gestion de base de données _____?
+          <reponse1 check="faux">
+               Orienté objet
+          </reponse1>
+          <reponse2 check="faux">
+               Hiérarchique
+          </reponse2>
+          <reponse3 check="vrai">
+               Relationnel
+          </reponse3>
+     </question>
+     <question>10: En java un variable local est déclaré dans :
+          <reponse1 check="faux">
+               Un tableau
+          </reponse1>
+          <reponse2 check="vrai">
+               Une méthode
+          </reponse2>
+          <reponse3 check="faux">
+               Un objet
+          </reponse3>
+     </question>
+</qcm>

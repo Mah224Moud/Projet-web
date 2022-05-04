@@ -4,7 +4,7 @@
             <a href="index.php?location=homePage">Accueil</a>
         </li>
         <li>
-            <a href="">Cours</a>
+            <a href="index.php?location=cours">Cours</a>
         </li>
         <li>
             <a href="index.php?location=forum">Forum</a>

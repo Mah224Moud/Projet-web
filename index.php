@@ -224,7 +224,7 @@ if(isset($_GET['location']))
             }else
                 homePage();
             break;
-        //====================================
+
         case $_GET['location'] == 'disableLesson':
             if(isset($_SESSION['admin_username'])){
                 if(isset($_GET['idCours']) && $_GET['idCours']>0 && isset($_GET['idLesson']) && $_GET['idLesson']>0)
@@ -280,9 +280,31 @@ if(isset($_GET['location']))
             }else
                 homePage();
             break;
-        //====================================
+
         case $_GET['location'] == 'otherProfile':
             otherProfile($_GET['userID']);
+            break;
+        case $_GET['location'] == 'quiz':
+            quiz();
+            break;
+
+        case $_GET['location'] == 'quizCheck':
+            quizCheck();
+            break;
+
+        case $_GET['location'] == 'quizResult':
+            quizResult();
+            break;
+
+
+
+
+
+        
+
+
+        case $_GET['location'] == "aboutUs":
+            aboutUs();
             break;
 
         default:

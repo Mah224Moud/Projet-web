@@ -16,10 +16,24 @@
     <h1>Bienvenue sur la page d'admin</h1>
     
 
-    <a href="index.php?location=allMembers">Membres</a>
-    <a href="index.php?location=signal">Signal</a>
-    <a href="index.php?location=adminForum">Forum</a>
-    <a href="index.php?location=adminCourses">Cours</a>
+    <div id="mainPage">
+        <a href="index.php?location=allMembers">
+            <img src="./Public/Image/members.png" alt="">
+            <div id="members">Members</div>
+        </a>
+        <a href="index.php?location=signal">
+            <img src="./Public/Image/news.png" alt="">
+            <div id="signal">Signal</div>
+        </a>
+        <a href="index.php?location=adminForum">
+            <img src="./Public/Image/chat.png" alt="">
+            <div id="forum">Forum</div>
+        </a>
+        <a href="index.php?location=adminCourses">
+            <img src="./Public/Image/cours.jpg" alt="">
+            <div id="cours">Cours</div>
+        </a>
+    </div>
     
 </body>
 </html>

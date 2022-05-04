@@ -13,12 +13,19 @@
 
     <?php if(isset($_SESSION['connected'])) :?>
         <h2><em>Bonjour <?=$_SESSION['username']?></em></h2>
+        <?php if(isset($_SESSION['quiz_status'])) :?>
+            suggestion de cours ici
+        <?php else: ?>
+            <a href="index.php?location=quiz"><h2>Répondez à ce questionnaire pour déterminer votre niveau et béneficier d'une suggestion de cours</h2></a>
+        <?php endif ?>
     <?php else :?>
         <h2><em>Vous n'êtes pas connecté</em></h2>
     <?php endif ?>
 
-    <h1>Liste des cours</h1>
+    
 
+    <h1>Liste des cours</h1>
+    <h2><a href="index.php">Accueil </a>> Cours</h2>
         <?php if(isset($cours)): ?>
             <div class="allCours">
                 <?php while($lecours = $cours->fetch()) : ?>
@@ -39,7 +46,5 @@
                 <?php endwhile; ?>
             </div>
         <?php endif; ?>
-
-
 </body>
 </html>
