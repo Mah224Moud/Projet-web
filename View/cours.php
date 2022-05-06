@@ -13,8 +13,35 @@
 
     <?php if(isset($_SESSION['connected'])) :?>
         <h2><em>Bonjour <?=$_SESSION['username']?></em></h2>
-        <?php if(isset($_SESSION['quiz_status'])) :?>
+        <?php if(isset($_SESSION['status']) && $_SESSION['status'] == 'answered') :?>
             suggestion de cours ici
+
+            
+            <?php if(isset($suggest)): ?>
+                <div class="allCours">
+                    <?php while($lecours = $suggest->fetch()) : ?>
+                        <div class="allSuggestion">
+                            <div class="cours suggestion">
+                                <h2><?=$lecours['titre']?></h2>
+                                <p class="description"><?=$lecours['description']?></p>
+                                <div class="info">
+                                    <p>Source : <a href="<?= $lecours['source']?>"><?= $lecours['source']?></a></p>
+                                    <p>Date de création : <?= $lecours['date_creation']?> </p>
+                                    <p>Dernière modification : <?= $lecours['date_modif']?></p>
+                                </div>
+                                <?php if($lecours['statut'] == 'active'): ?>
+                                    <a href="index.php?location=leCours&idCours=<?=$lecours['id']?>">Acceder au cours</a>
+                                <?php else: ?>
+                                    <p>Ce cours sera disponible très prochainement !! Merci pour votre compréhension.</p>
+                                <?php endif; ?>
+                            </div>
+                            
+                        </div>
+                        
+                    <?php endwhile; ?>
+                </div>
+            <?php endif; ?>
+
         <?php else: ?>
             <a href="index.php?location=quiz"><h2>Répondez à ce questionnaire pour déterminer votre niveau et béneficier d'une suggestion de cours</h2></a>
         <?php endif ?>

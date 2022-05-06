@@ -85,3 +85,22 @@ textarea{
     width: 20%;
     height: 20%;
 }
+
+.suggestion
+{
+    width: 350px;
+}
+
+.allSuggestion
+{
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.suggestion:hover
+{
+    width: 500px;
+}

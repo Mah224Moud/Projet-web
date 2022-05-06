@@ -76,7 +76,7 @@ function sessionMember($email)
 {
     $data_base= dataBaseConnexion();
 
-    $session= $data_base->prepare('SELECT id, firstName, lastName, DATE_FORMAT(birthday, \'%d %b %Y\') AS birthday_, email, username, picture, gender, DATE_FORMAT(inscription_date, \'%d %b %Y\') AS date_ FROM members WHERE email=?');
+    $session= $data_base->prepare('SELECT id, firstName, lastName, DATE_FORMAT(birthday, \'%d %b %Y\') AS birthday_, email, username, picture, gender, DATE_FORMAT(inscription_date, \'%d %b %Y\') AS date_, status_, level_ FROM members WHERE email=?');
     $session->execute([$email]);
 
     $getSession= $session->fetch();
@@ -504,8 +504,18 @@ function updateQuiz($userID, $result)
 {
     $data_base = dataBaseConnexion();
 
-    $insert= $data_base->prepare("INSERT INTO quiz (level_, userID) VALUES(?, ?)");
-    $insert->execute([$result, $userID]);
+    $insert= $data_base->prepare("UPDATE members SET level_='$result', status_='answered' WHERE id=?");
+    $insert->execute([$userID]);
 
     return $insert;
+}
+
+function suggestion($level)
+{
+    $data_base = dataBaseConnexion();
+    
+    $suggest = $data_base->prepare('SELECT id, statut, titre, description, DATE_FORMAT(date_creation, \'%d %b %Y \') AS date_creation, DATE_FORMAT(date_modif, \'%d %b %Y \') AS date_modif, source FROM cours WHERE points <= ?');
+    $suggest->execute([$level]);
+
+    return $suggest;
 }

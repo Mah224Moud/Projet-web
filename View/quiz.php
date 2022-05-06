@@ -37,7 +37,7 @@
             </div>
         </fieldset>
     </form>
-    <?php if(isset($done) && isset($result)): ?>
+    <?php if(isset($result)): ?>
         <script>
             alert("Vous avez obtenu un resultat de <?=$result?>%");
             window.location.replace('index.php?location=quizResult');

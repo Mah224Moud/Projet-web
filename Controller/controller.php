@@ -227,6 +227,8 @@ function loginCheck()
                     $_SESSION['id']= $session['id'];
                     $_SESSION['birthday']= $session['birthday_'];
                     $_SESSION['inscription_date']= $session['date_'];
+                    $_SESSION['status'] = $session['status_'];
+                    $_SESSION['level'] = $session['level_'];
 
                     if($session['username'] == "admin")
                     {
@@ -659,6 +661,7 @@ function applyModification()
 }
 
 function cours(){
+    $suggest = suggestion($_SESSION['level']);
     $cours = allCours();
     require('View/cours.php');
 }
@@ -866,51 +869,25 @@ function quizCheck()
     }
     else
     {
-        $done= "tout est bon";
         $result= 0;
-        if($_POST['reponse1'] == "vrai")
-        {
-            $result+= 10;
-        }
-        if($_POST['reponse2'] == "vrai")
-        {
-            $result+= 10;
-        }
-        if($_POST['reponse3'] == "vrai")
-        {
-            $result+= 10;
-        }
-        if($_POST['reponse4'] == "vrai")
-        {
-            $result+= 10;
-        }
-        if($_POST['reponse5'] == "vrai")
-        {
-            $result+= 10;
-        }
-        if($_POST['reponse6'] == "vrai")
-        {
-            $result+= 10;
-        }
-        if($_POST['reponse7'] == "vrai")
-        {
-            $result+= 10;
-        }
-        if($_POST['reponse8'] == "vrai")
-        {
-            $result+= 10;
-        }
-        if($_POST['reponse9'] == "vrai")
-        {
-            $result+= 10;
-        }
-        if($_POST['reponse10'] == "vrai")
-        {
-            $result+= 10;
+        for($n = 1; $n <=10; $n++)
+        {   
+            if($_POST["reponse$n"] == "vrai")
+            {
+                $result+= 10;
+            }
+
         }
 
         $updateQuiz= updateQuiz($_SESSION['id'], $result);
-        $_SESSION['quiz_status']= "answered";
+        setcookie('ANSWERED_QUIZ', $_SESSION['username'],
+        [
+            'expires' => time()+ 1*1*3600,
+            'secure' => true,
+            'httponly' => true,
+        ] );
+
+        //$_SESSION['quiz_status']= "answered";
     }
     
     $fichierXml= simplexml_load_file("./Public/Others/fichier.xml");
