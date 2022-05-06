@@ -15,18 +15,20 @@
         <h2><em>Bonjour <?=$_SESSION['username']?></em></h2>
     <?php endif ?>
 
-    <h1>Liste des cours</h1>
     <a id="addCours" href="index.php?location=addCours">Ajouter un cours</a>
+    <h1>Liste des cours</h1>
 
         <?php if(isset($cours)): ?>
             <div class="allCours">
                 <?php while($lecours = $cours->fetch()) : ?>
-                    <div class="cours">
+                    <div class="cours listedCourses">
                         <h2><?=$lecours['titre']?></h2>
                         <p class="description"><?=$lecours['description']?></p>
                         <div>
                             <div class="info">
-                                <p>Source : <a href="<?= $lecours['source']?>"><?= $lecours['source']?></a></p>
+                                <p>Source : <?php if($lecours['source']=='')echo "Aucune source pour ce cours"; ?>
+                                    <a href="<?= $lecours['source']?>"><?= $lecours['source']?></a>
+                                </p>
                                 <p>Date de création : <?= $lecours['date_creation']?> </p>
                                 <p>Dernière modification : <?= $lecours['date_modif']?></p>
                             </div>

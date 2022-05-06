@@ -26,6 +26,9 @@
             <label for="">Description : </label> <br>
             <textarea name="desc" id="" placeholder="Saisir ici une description du cours"></textarea>
             <br>
+            <label for="">Niveau</label> <br>
+            <input type="number" name="niveau" min="0" max="100" value = "0">
+            <br>
             <label for="">Source : </label> <br>
             <input type="text" name="source" placeholder="Indiquer ici une source">
             <br>

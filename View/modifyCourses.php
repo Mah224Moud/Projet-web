@@ -29,6 +29,9 @@
                     echo $lecours['description']; ?>
             </textarea>
             <br>
+            <label for="">Niveau</label> <br>
+            <input type="number" name="niveau" min="0" max="100" value = "<?php if(isset($lecours['points'])) echo $lecours['points']; ?>">
+            <br>
             <label for="">Source : </label> <br>
             <input type="text" name="source" value="<?php if(isset($lecours['source'])) echo $lecours['source']; ?>" placeholder="Indiquer ici une source">
             <br>

@@ -25,22 +25,28 @@
         <p>Nous avons développé ce site de cours en ligne dans le cadre d'un projet scolaire</p>
         <p>Les différents membres sont:</p>
         <p class="member">
-            CAMARA Mamadou <em>email</em>
+            CAMARA Mamadou <br>
+            <em>Email : Mamadou_Camara@etu.u-bourgogne.fr</em>
         </p>
         <p class="member">
-            BAH Saikou Oumar <em>email</em>
+            BAH Saikou Oumar <br>
+            <em>Email : Saikou_Bah@etu.u-bourgogne.fr</em>
         </p>
         <p class="member">
-            DIALLO Mamoudou <em>email</em>
+            DIALLO Mamoudou <br>
+            <em>Email : Mamoudou_Diallo@etu.u-bourgogne.fr</em>
         </p>
         <p class="member">
-            AIT BEN ALI Ilham <em>email</em>
+            AIT BEN ALI Ilham <br>
+            <em>Email : </em>
         </p>
         <p class="member">
-            CEM Edizem <em>email</em>
+            CEM Edizem <br> 
+            <em>Email : </em>
         </p>
         <p class="member">
-            TALLALOUM <em>email</em>
+            Talla LOUM <br> 
+            <em>Email : </em>
         </p>
 
         </div>

@@ -737,8 +737,10 @@ function addingCours(){
     $title = htmlspecialchars($_POST['title']);
     $descrip = htmlspecialchars($_POST['desc']);
     $source = htmlspecialchars($_POST['source']);
-        
-    $isAdded = addCourse($title, $descrip, $source);
+    $level = htmlspecialchars($_POST['niveau']);
+
+
+    $isAdded = addCourse($title, $descrip, $source, $level);
         if($isAdded)
             $confirm = "Cours ajouté";
         else
@@ -757,8 +759,9 @@ function modifyingCours($idcours){
     $title = htmlspecialchars($_POST['title']);
     $descrip = htmlspecialchars($_POST['desc']);
     $source = htmlspecialchars($_POST['source']);
+    $level = htmlspecialchars($_POST['niveau']);
     
-    $isModified = modifyCourse($idcours, $title, $descrip, $source);
+    $isModified = modifyCourse($idcours, $title, $descrip, $source, $level);
         if($isModified)
             $confirm = "Cours modifié";
         else

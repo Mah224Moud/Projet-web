@@ -341,7 +341,7 @@ function getCours($idcours)
 {
     $data_base = dataBaseConnexion();
 
-    $lecours = $data_base->prepare('SELECT id, statut, titre, description, DATE_FORMAT(date_creation, \'%d %b %Y \') AS date_creation, DATE_FORMAT(date_modif, \'%d %b %Y \') AS date_modif, source FROM cours WHERE id = ?');
+    $lecours = $data_base->prepare('SELECT id, statut, titre, description, DATE_FORMAT(date_creation, \'%d %b %Y \') AS date_creation, DATE_FORMAT(date_modif, \'%d %b %Y \') AS date_modif, source, points FROM cours WHERE id = ?');
     $lecours->execute([$idcours]);
 
     return $lecours;
@@ -402,23 +402,23 @@ function deleteCourse($id)
 }
 
 
-function addCourse($titre, $descr, $source)
+function addCourse($titre, $descr, $source, $level)
 {
     $data_base = dataBaseConnexion();
 
-    $adding = $data_base->prepare("INSERT INTO cours(statut, titre, description, source) VALUES ('not active', ?, ?, ?)");
-    $adding->execute([$titre, $descr, $source]);
+    $adding = $data_base->prepare("INSERT INTO cours(statut, titre, description, source, points) VALUES ('not active', ?, ?, ?, ?)");
+    $adding->execute([$titre, $descr, $source, $level]);
     
     return $adding;
 }
 
 
-function modifyCourse($idcours, $titre, $descr, $source)
+function modifyCourse($idcours, $titre, $descr, $source, $level)
 {
     $data_base = dataBaseConnexion();
     
-    $modifying = $data_base->prepare('UPDATE cours SET titre = ?, description = ?, source = ?, date_modif = CURRENT_DATE where id = ?');
-    $modifying->execute([$titre, $descr, $source, $idcours]);
+    $modifying = $data_base->prepare('UPDATE cours SET titre = ?, description = ?, source = ?, points = ?, date_modif = CURRENT_DATE where id = ?');
+    $modifying->execute([$titre, $descr, $source, $level, $idcours]);
 
     return $modifying;
 }
