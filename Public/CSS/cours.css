@@ -86,21 +86,48 @@ textarea{
     height: 20%;
 }
 
-.suggestion
+.suggestion, .listedCourses
 {
     width: 350px;
+    transition: all ease-in-out 1s;
 }
 
-.allSuggestion
+
+.allCours
 {
-    display: flex;
-    justify-content: start;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+}
+.allSuggestion,#titleSuggestion
+{
+    display: none;
 }
 
 .suggestion:hover
 {
     width: 500px;
+    transition: all ease-in-out 1s;
+    
+}
+
+#suggestion
+{
+    border-radius: 15px;
+    height: 25px;
+    width: auto;
+    text-align: center;
+    margin-left: 5px;
+    padding: 3px 7px;
+}
+
+#suggestion:hover
+{
+    
+    background-color: aqua;
+    transition: all ease-in-out 0.5s;
+    cursor: pointer;
 }

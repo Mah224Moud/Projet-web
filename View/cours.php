@@ -14,13 +14,12 @@
     <?php if(isset($_SESSION['connected'])) :?>
         <h2><em>Bonjour <?=$_SESSION['username']?></em></h2>
         <?php if(isset($_SESSION['status']) && $_SESSION['status'] == 'answered') :?>
-            suggestion de cours ici
 
-            
             <?php if(isset($suggest)): ?>
-                <div class="allCours">
+                <em>Vous avez repondu aux questionnaire</em><button id="suggestion">Appuyez-moi pour voir vos suggestions de cours</button>
+                    <h1 id="titleSuggestion">Vos suggestion de cours</h1>
+                    <div class="allSuggestion">
                     <?php while($lecours = $suggest->fetch()) : ?>
-                        <div class="allSuggestion">
                             <div class="cours suggestion">
                                 <h2><?=$lecours['titre']?></h2>
                                 <p class="description"><?=$lecours['description']?></p>
@@ -35,8 +34,6 @@
                                     <p>Ce cours sera disponible très prochainement !! Merci pour votre compréhension.</p>
                                 <?php endif; ?>
                             </div>
-                            
-                        </div>
                         
                     <?php endwhile; ?>
                 </div>
@@ -56,7 +53,7 @@
         <?php if(isset($cours)): ?>
             <div class="allCours">
                 <?php while($lecours = $cours->fetch()) : ?>
-                    <div class="cours">
+                    <div class="cours listedCourses">
                         <h2><?=$lecours['titre']?></h2>
                         <p class="description"><?=$lecours['description']?></p>
                         <div class="info">
@@ -73,5 +70,24 @@
                 <?php endwhile; ?>
             </div>
         <?php endif; ?>
+    <script src="./Public/JS/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#suggestion").click(function(){
+                $(".allSuggestion").fadeToggle(1000);
+                $("#titleSuggestion").fadeToggle(1000);
+                $(".allSuggestion").css(
+                    {
+                        'display': 'flex',
+                        'flex-direction': 'row',
+                        'flex-wrap': 'wrap',
+                        'justify-content': 'space-around',
+                        'align-items': 'stretch',
+                        'align-content': 'stretch'
+                    }
+                );
+            });
+        });
+    </script>
 </body>
 </html>

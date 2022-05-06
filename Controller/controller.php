@@ -8,6 +8,7 @@ global $session;
 
 function homePage()
 {
+    autoConnexion();
     require('View/home.php');
 }
 
@@ -227,8 +228,16 @@ function loginCheck()
                     $_SESSION['id']= $session['id'];
                     $_SESSION['birthday']= $session['birthday_'];
                     $_SESSION['inscription_date']= $session['date_'];
-                    $_SESSION['status'] = $session['status_'];
-                    $_SESSION['level'] = $session['level_'];
+                    $_SESSION['level']= $session['level_'];
+                    $_SESSION['status']= $session['status_'];
+
+
+                    //Creation cookie
+                    setcookie("email", $_SESSION['email'], [
+                        'expires' => time() + 365*24*3600,
+                        'secure' => true,
+                        'httponly' => true,
+                    ]);
 
                     if($session['username'] == "admin")
                     {
@@ -257,7 +266,9 @@ function loginCheck()
 
 function logout()
 {
+
     session_destroy();
+    setcookie('email');
     $logout= true;
     require("View/home.php");
 }
@@ -661,7 +672,12 @@ function applyModification()
 }
 
 function cours(){
-    $suggest = suggestion($_SESSION['level']);
+    if(isset($_SESSION['connected']))
+    {
+
+        $suggest = suggestion($_SESSION['level']);
+    }
+        
     $cours = allCours();
     require('View/cours.php');
 }
@@ -880,14 +896,8 @@ function quizCheck()
         }
 
         $updateQuiz= updateQuiz($_SESSION['id'], $result);
-        setcookie('ANSWERED_QUIZ', $_SESSION['username'],
-        [
-            'expires' => time()+ 1*1*3600,
-            'secure' => true,
-            'httponly' => true,
-        ] );
-
-        //$_SESSION['quiz_status']= "answered";
+        $_SESSION['status'] = "answered";
+        $_SESSION['level']= $result;
     }
     
     $fichierXml= simplexml_load_file("./Public/Others/fichier.xml");
@@ -909,4 +919,26 @@ function quizResult()
 function aboutUs()
 {
     require('View/aboutUs.php');
+}
+
+
+
+function autoConnexion()
+{
+    if(isset($_COOKIE['email']))
+    {
+        $session= sessionMember($_COOKIE['email']);
+        $_SESSION['connected']= $session;
+
+        $_SESSION['username']= $session['username'];
+        $_SESSION['picture']= $session['picture'];
+        $_SESSION['firstName']= $session['firstName'];
+        $_SESSION['lastName']= $session['lastName'];
+        $_SESSION['email']= $session['email'];
+        $_SESSION['id']= $session['id'];
+        $_SESSION['birthday']= $session['birthday_'];
+        $_SESSION['inscription_date']= $session['date_'];
+        $_SESSION['status'] = $session['status_'];
+        $_SESSION['level'] = $session['level_'];
+    }
 }
