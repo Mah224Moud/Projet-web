@@ -34,27 +34,29 @@
 
         <?php if(isset($lessons)): ?>
             <?php $i = 1; ?>
-            <?php while($lesson = $lessons->fetch()) : ?>
-                <div class="lesson">
-                    <h3>Leçon <?php echo "$i : "; $i++; echo $lesson['titre']?></h3>
-                    <p><?=$lesson['description']?></p>
+            <div class="allLessons">
+                <?php while($lesson = $lessons->fetch()) : ?>
+                    <div class="lesson">
+                        <h3>Leçon <?php echo "$i : "; $i++; echo $lesson['titre']?></h3>
+                        <p><?=$lesson['description']?></p>
 
-                    
-                    <?php if($lesson['statut'] == 'active'): ?>
-                        <!-- si connecté lien vers la leçon sinon page connection-->
-                        <?php if(isset($_SESSION['connected'])): ?> 
-                            <a href="<?= $lesson['fichier'] ?>">voir la leçon</a>
+                        
+                        <?php if($lesson['statut'] == 'active'): ?>
+                            <!-- si connecté lien vers la leçon sinon page connection-->
+                            <?php if(isset($_SESSION['connected'])): ?> 
+                                <a href="<?= $lesson['fichier'] ?>">voir la leçon</a>
+                            <?php else: ?>
+                                <a href="index.php?location=login">voir la leçon</a>
+                            <?php endif; ?>
+                        
                         <?php else: ?>
-                            <a href="index.php?location=login">voir la leçon</a>
+                            cette leçon est momentanement indisponible
                         <?php endif; ?>
-                    
-                    <?php else: ?>
-                        cette leçon est momentanement indisponible
-                    <?php endif; ?>
-               
-                    
-                </div>
-            <?php endwhile; ?>
+                
+                        
+                    </div>
+                <?php endwhile; ?>
+            </div>
         <?php endif; ?>
     <?php endif; ?>
 

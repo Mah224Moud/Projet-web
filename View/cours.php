@@ -16,7 +16,7 @@
         <?php if(isset($_SESSION['status']) && $_SESSION['status'] == 'answered') :?>
 
             <?php if(isset($suggest)): ?>
-                <em>Vous avez repondu aux questionnaire</em><button id="suggestion">Appuyez-moi pour voir vos suggestions de cours</button>
+                <em>Vous avez repondu au questionnaire</em><button id="suggestion">Appuyez-moi pour voir vos suggestions de cours</button>
                     <h1 id="titleSuggestion">Vos suggestion de cours</h1>
                     <div class="allSuggestion">
                     <?php while($lecours = $suggest->fetch()) : ?>
@@ -35,9 +35,9 @@
                                 <?php endif; ?>
                             </div>
                         
-                    <?php endwhile; ?>
+                    <?php endwhile ?>
                 </div>
-            <?php endif; ?>
+            <?php endif ?>
 
         <?php else: ?>
             <a href="index.php?location=quiz"><h2>Répondez à ce questionnaire pour déterminer votre niveau et béneficier d'une suggestion de cours</h2></a>

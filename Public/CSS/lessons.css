@@ -1,9 +1,24 @@
+body
+{
+    background: url("../Image/fond5.png");
+}
+
+h2
+{
+    font-family: "Brush Script MT", cursive;
+}
+
+h1{
+    text-align: center;
+    font-family: "Brush Script MT", cursive;
+}
+
 .lesson{
     background-color: gray;
     text-align: center;
     border: 2px solid black;
     border-radius: 25px;
-    margin: 1% 25%;
+    margin: 1% 20px;
 }
 
 .lesson p{
@@ -32,4 +47,24 @@ textarea{
     margin-bottom: 10px;
     width: 20%;
     height: 20%;
+    resize: none;
+    text-align: center;
+    padding: 5px;
+}
+
+.allLessons
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+    margin-top: 20px;
+}
+
+input, textarea
+{
+    border-radius: 25px;
+    text-align: center;
 }

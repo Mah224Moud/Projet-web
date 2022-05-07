@@ -84,6 +84,7 @@ textarea{
     margin-bottom: 10px;
     width: 20%;
     height: 20%;
+    resize: none;
 }
 
 .suggestion, .listedCourses
@@ -130,4 +131,20 @@ textarea{
     background-color: aqua;
     transition: all ease-in-out 0.5s;
     cursor: pointer;
+}
+
+.buttons
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+input, textarea
+{
+    border-radius: 25px;
+    text-align: center;
 }

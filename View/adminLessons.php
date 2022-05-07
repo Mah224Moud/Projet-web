@@ -36,29 +36,31 @@
 
         <?php if(isset($lessons)): ?>
             <?php $i = 1; ?>
-            <?php while($lesson = $lessons->fetch()) : ?>
-                <div class="lesson">
-                    <h3>Leçon <?php echo "$i : "; $i++; echo $lesson['titre']?></h3>
-                    <p><?=$lesson['description']?></p>
+            <div class="allLessons">
+                <?php while($lesson = $lessons->fetch()) : ?>
+                    <div class="lesson">
+                        <h3>Leçon <?php echo "$i : "; $i++; echo $lesson['titre']?></h3>
+                        <p><?=$lesson['description']?></p>
 
-                    <div class="buttons">
-                        <a href="index.php?location=modifyLesson&idCours=<?=$idcours?>&idLesson=<?=$lesson['id']?>">modifier</a>
-                        <?php if($lesson['statut'] == 'active'): ?>
-                            <a href="index.php?location=disableLesson&idCours=<?=$idcours?>&idLesson=<?=$lesson['id']?>">désactiver</a>
-                        <?php else : ?>
-                            <a href="index.php?location=ableLesson&idCours=<?=$idcours?>&idLesson=<?=$lesson['id']?>">activer</a>
+                        <div class="buttons">
+                            <a href="index.php?location=modifyLesson&idCours=<?=$idcours?>&idLesson=<?=$lesson['id']?>">modifier</a>
+                            <?php if($lesson['statut'] == 'active'): ?>
+                                <a href="index.php?location=disableLesson&idCours=<?=$idcours?>&idLesson=<?=$lesson['id']?>">désactiver</a>
+                            <?php else : ?>
+                                <a href="index.php?location=ableLesson&idCours=<?=$idcours?>&idLesson=<?=$lesson['id']?>">activer</a>
+                            <?php endif; ?>
+                            <a href="index.php?location=removeLesson&idCours=<?=$idcours?>&idLesson=<?=$lesson['id']?>">supprimer</a>
+                        </div>
+                        
+                        <?php if($lesson['fichier'] != ''): ?>
+                            <a href="<?= $lesson['fichier'] ?>">voir la leçon</a>
+                        <?php else: ?>
+                            Aucun fichier pour cette leçon
                         <?php endif; ?>
-                        <a href="index.php?location=removeLesson&idCours=<?=$idcours?>&idLesson=<?=$lesson['id']?>">supprimer</a>
                     </div>
-                    
-                    <?php if($lesson['fichier'] != ''): ?>
-                        <a href="<?= $lesson['fichier'] ?>">voir la leçon</a>
-                    <?php else: ?>
-                        Aucun fichier pour cette leçon
-                    <?php endif; ?>
-                       
-                </div>
-            <?php endwhile; ?>
+                <?php endwhile; ?>
+            </div>
+            
         <?php endif; ?>
     <?php endif; ?>
 

@@ -34,7 +34,7 @@
         </p>
         <p class="member">
             DIALLO Mamoudou <br>
-            <em>Email : Mamoudou_Diallo@etu.u-bourgogne.fr</em>
+            <em>Email : Mamoudou_Diallo01@etu.u-bourgogne.fr</em>
         </p>
         <p class="member">
             AIT BEN ALI Ilham <br>
