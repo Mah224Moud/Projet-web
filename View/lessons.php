@@ -38,8 +38,9 @@
                 <?php while($lesson = $lessons->fetch()) : ?>
                     <div class="lesson">
                         <h3>Leçon <?php echo "$i : "; $i++; echo $lesson['titre']?></h3>
-                        <p><?=$lesson['description']?></p>
-
+                        <div class="description">
+                            <p><?=$lesson['description']?></p>
+                        </div>
                         
                         <?php if($lesson['statut'] == 'active'): ?>
                             <!-- si connecté lien vers la leçon sinon page connection-->

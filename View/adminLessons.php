@@ -40,8 +40,9 @@
                 <?php while($lesson = $lessons->fetch()) : ?>
                     <div class="lesson">
                         <h3>Leçon <?php echo "$i : "; $i++; echo $lesson['titre']?></h3>
-                        <p><?=$lesson['description']?></p>
-
+                        <div class="description">
+                            <p><?=$lesson['description']?></p>
+                        </div>
                         <div class="buttons">
                             <a href="index.php?location=modifyLesson&idCours=<?=$idcours?>&idLesson=<?=$lesson['id']?>">modifier</a>
                             <?php if($lesson['statut'] == 'active'): ?>
