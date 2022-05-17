@@ -38,15 +38,15 @@
         </p>
         <p class="member">
             AIT BEN ALI Ilham <br>
-            <em>Email : </em>
+            <em>Email : Ilham_Ait-ben-ali@etu.u-bourgogne.fr</em>
         </p>
         <p class="member">
-            CEM Edizem <br> 
-            <em>Email : </em>
+            CEM Ediz <br> 
+            <em>Email : Cem_Ediz@etu.u-bourgogne.fr</em>
         </p>
         <p class="member">
             Talla LOUM <br> 
-            <em>Email : </em>
+            <em>Email : Talla_Loum@etu.u-bourgogne.fr</em>
         </p>
 
         </div>
